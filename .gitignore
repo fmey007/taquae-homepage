@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (si on utilise npm/yarn plus tard)
+node_modules/
+.env
+dist/
+build/
+
+# Design tool artifacts
+.thumbnail

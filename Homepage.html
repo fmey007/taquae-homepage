@@ -1,0 +1,1554 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Taquae — Stratégie IA avant technologie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================== Tokens ============================== */
+:root{
+  --dark:        #0E0F0C;
+  --dark-2:      #161814;
+  --light:       #F3EEE3;
+  --light-2:     #FAF7EF;
+  --ink:         #14140F;
+  --paper:       #F3EEE3;
+  --muted-dark:  rgba(243, 238, 227, 0.58);
+  --muted-light: rgba(20, 20, 15, 0.58);
+  --rule-dark:   rgba(243, 238, 227, 0.14);
+  --rule-light:  rgba(20, 20, 15, 0.12);
+  --accent:      #C8FF3E;       /* lime */
+  --accent-deep: #9FD419;
+  --display:     "Spectral", "Times New Roman", serif;
+  --sans:        "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --mono:        "Geist Mono", ui-monospace, monospace;
+
+  --maxw:        1320px;
+  --gutter:      clamp(20px, 4vw, 56px);
+  --section-y:   clamp(80px, 10vw, 140px);
+}
+
+*,*::before,*::after{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img{ max-width:100%; display:block; }
+a{ color: inherit; text-decoration: none; }
+button{ font: inherit; cursor: pointer; }
+::selection{ background: var(--accent); color: var(--dark); }
+
+.wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ============================== Type system ============================== */
+.eyebrow{
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted-light);
+}
+.eyebrow::before{
+  content:"";
+  width: 28px; height: 1px;
+  background: currentColor;
+  display:inline-block;
+  opacity: .7;
+}
+section.dark .eyebrow{ color: var(--muted-dark); }
+
+h1,h2,h3,h4{ font-family: var(--display); font-weight: 400; letter-spacing: -0.02em; margin:0; line-height: 1.02; }
+.display{
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(48px, 8.4vw, 132px);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+.display em{ font-style: italic; font-weight: 300; }
+.h2{
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(36px, 5.2vw, 76px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+}
+.h2 em{ font-style: italic; font-weight: 300; }
+.h3{
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+.lede{
+  font-size: clamp(17px, 1.5vw, 22px);
+  line-height: 1.45;
+  max-width: 56ch;
+  color: var(--muted-light);
+}
+section.dark .lede{ color: var(--muted-dark); }
+.kicker{
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted-light);
+}
+section.dark .kicker{ color: var(--muted-dark); }
+
+/* ============================== Section base ============================== */
+section{
+  padding: var(--section-y) 0;
+  position: relative;
+  overflow: hidden;
+}
+section.dark{ background: var(--dark); color: var(--light); }
+section.light{ background: var(--paper); color: var(--ink); }
+.section-head{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: clamp(40px, 6vw, 88px);
+}
+.section-head .row{
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+
+/* ============================== Buttons ============================== */
+.btn{
+  --bg: var(--ink);
+  --fg: var(--paper);
+  --bd: var(--ink);
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 22px 16px 24px;
+  font-family: var(--sans); font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  background: var(--bg); color: var(--fg);
+  border: 1px solid var(--bd);
+  border-radius: 999px;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), background .25s, color .25s, border-color .25s;
+  position: relative;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn .arrow{
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--fg); color: var(--bg);
+  display:inline-grid; place-items:center;
+  font-size: 12px;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.btn:hover .arrow{ transform: translateX(3px) rotate(-45deg); }
+.btn--ghost{
+  --bg: transparent;
+  --fg: currentColor;
+  --bd: currentColor;
+}
+.btn--ghost .arrow{ background: currentColor; color: var(--dark); }
+section.dark .btn--ghost .arrow{ color: var(--dark); }
+.btn--accent{
+  --bg: var(--accent);
+  --fg: var(--dark);
+  --bd: var(--accent);
+}
+.btn--accent .arrow{ background: var(--dark); color: var(--accent); }
+
+/* link arrow */
+.link{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: gap .25s ease;
+}
+.link:hover{ gap: 14px; }
+
+/* ============================== Top nav ============================== */
+.nav{
+  position: fixed; inset: 0 0 auto 0;
+  z-index: 60;
+  padding: 18px 0;
+  transition: background .35s ease, color .35s ease, padding .35s ease, backdrop-filter .35s ease;
+  color: var(--light);
+}
+.nav.scrolled{
+  background: rgba(14, 15, 12, 0.78);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  padding: 12px 0;
+}
+.nav.over-light:not(.scrolled){
+  color: var(--ink);
+}
+.nav.over-light.scrolled{
+  background: rgba(243, 238, 227, 0.82);
+  color: var(--ink);
+}
+.nav .row{
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+}
+.brand{
+  display: inline-flex; align-items: baseline; gap: 10px;
+  font-family: var(--display); font-style: italic; font-weight: 400;
+  font-size: 26px; letter-spacing: -0.02em;
+}
+.brand small{
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: .65;
+  transform: translateY(-2px);
+}
+.brand .dot{
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); display:inline-block;
+  margin-right: 2px; transform: translateY(-3px);
+}
+.nav-links{
+  display: flex; align-items: center; gap: 28px;
+  font-size: 14px; font-weight: 500;
+}
+.nav-links a{ position: relative; padding: 4px 0; }
+.nav-links a::after{
+  content:""; position:absolute; left:0; right:0; bottom:-2px;
+  height:1px; background: currentColor; transform: scaleX(0); transform-origin: left;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.nav-links a:hover::after{ transform: scaleX(1); }
+.nav-right{ display: flex; align-items: center; gap: 18px; }
+.lang{
+  display: inline-flex; gap: 0; border: 1px solid currentColor;
+  border-radius: 999px; padding: 3px; font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  opacity: .85;
+}
+.lang button{
+  background: transparent; border: 0; color: inherit;
+  padding: 5px 9px; border-radius: 999px;
+  transition: background .25s, color .25s;
+}
+.lang button.active{ background: currentColor; color: var(--dark); }
+.nav.over-light .lang button.active{ color: var(--paper); }
+.nav .cta-mini{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500;
+  background: var(--accent); color: var(--dark);
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--accent);
+}
+.nav .cta-mini:hover{ background: transparent; color: currentColor; }
+.menu-toggle{ display:none; }
+
+@media (max-width: 880px){
+  .nav-links{ display: none; }
+  .nav-right .cta-mini{ display:none; }
+}
+
+/* ============================== HERO ============================== */
+.hero{
+  padding: clamp(140px, 18vw, 220px) 0 clamp(60px, 8vw, 96px);
+  background: var(--dark);
+  color: var(--light);
+  position: relative;
+}
+.hero::before{
+  content:"";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(60% 50% at 80% 20%, rgba(200,255,62,0.08) 0%, transparent 60%),
+    radial-gradient(60% 60% at 0% 100%, rgba(200,255,62,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero .wrap{ position: relative; }
+.hero .meta-bar{
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 24px; flex-wrap: wrap;
+  margin-bottom: clamp(40px, 7vw, 86px);
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule-dark);
+}
+.hero .meta-bar .left{ display:flex; gap: 18px; align-items: baseline; flex-wrap: wrap; }
+.hero .meta-bar .badge{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 6px 10px;
+  border: 1px solid var(--rule-dark);
+  border-radius: 999px;
+  color: var(--accent);
+}
+.hero .meta-bar .badge .ping{
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  display: inline-block; margin-right: 8px; vertical-align: middle;
+  box-shadow: 0 0 0 0 rgba(200,255,62,0.6);
+  animation: ping 2.4s ease-out infinite;
+}
+@keyframes ping{
+  0%{ box-shadow: 0 0 0 0 rgba(200,255,62,0.5); }
+  70%{ box-shadow: 0 0 0 10px rgba(200,255,62,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(200,255,62,0); }
+}
+
+.hero h1{
+  max-width: 14ch;
+}
+.hero h1 .accent{ color: var(--accent); font-style: italic; font-weight: 300; }
+.hero .sub-row{
+  margin-top: clamp(36px, 5vw, 64px);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+.hero .sub-row p{ margin: 0; }
+.hero .actions{ display:flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.hero .actions .btn{ --bg: var(--accent); --fg: var(--dark); --bd: var(--accent); }
+.hero .actions .btn--ghost{ --bg: transparent; --fg: var(--light); --bd: var(--rule-dark); }
+.hero .actions .btn--ghost:hover{ --bd: var(--light); }
+
+@media (max-width: 760px){
+  .hero .sub-row{ grid-template-columns: 1fr; }
+}
+
+/* hero ticker / running line at bottom */
+.ticker{
+  margin-top: clamp(56px, 8vw, 100px);
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+  overflow: hidden;
+  padding: 16px 0;
+  position: relative;
+}
+.ticker-track{
+  display: inline-flex; gap: 48px;
+  white-space: nowrap;
+  animation: ticker 38s linear infinite;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-dark);
+}
+.ticker-track span{ display:inline-flex; align-items: center; gap: 16px; }
+.ticker-track span::before{
+  content:"●"; color: var(--accent); font-size: 8px;
+}
+@keyframes ticker{
+  from{ transform: translateX(0); }
+  to{   transform: translateX(-50%); }
+}
+
+/* ============================== Trust strip ============================== */
+.trust{ padding: 0; background: var(--dark); color: var(--light); }
+.trust .wrap{ padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(40px, 6vw, 80px); }
+.trust-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule-dark);
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+}
+.trust-grid > div{
+  background: var(--dark);
+  padding: 28px 22px;
+}
+.trust-grid .n{
+  font-family: var(--display);
+  font-size: clamp(36px, 4.6vw, 56px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  display: block;
+}
+.trust-grid .n em{ color: var(--accent); font-style: italic; font-weight: 300; }
+.trust-grid .lbl{
+  display: block;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-dark);
+  max-width: 22ch;
+}
+@media (max-width: 880px){
+  .trust-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================== Services ============================== */
+.services .section-head .row{
+  border-bottom: 1px solid var(--rule-light);
+  padding-bottom: 24px;
+}
+.services .section-head h2{ max-width: 16ch; }
+.services-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-light);
+  border: 1px solid var(--rule-light);
+}
+.svc{
+  background: var(--paper);
+  padding: 36px 32px 32px;
+  display: flex; flex-direction: column;
+  min-height: 480px;
+  position: relative;
+  transition: background .35s ease;
+}
+.svc:hover{ background: var(--light-2); }
+.svc .num{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-light);
+}
+.svc .ico{
+  margin: 14px 0 32px;
+  width: 56px; height: 56px;
+  position: relative;
+}
+.svc h3{ margin-bottom: 14px; }
+.svc p{ color: var(--muted-light); font-size: 15px; margin: 0 0 28px; max-width: 32ch; }
+.svc ul{
+  list-style: none; margin: 0 0 28px; padding: 0;
+  border-top: 1px solid var(--rule-light);
+  font-size: 14px;
+}
+.svc ul li{
+  border-bottom: 1px solid var(--rule-light);
+  padding: 12px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px;
+}
+.svc ul li::before{
+  content: ""; width:5px; height:5px; border-radius:50%;
+  background: var(--ink);
+  margin-right: auto;
+}
+.svc ul li span:first-of-type{ flex: 1; padding-left: 12px; }
+.svc ul li .meta{ color: var(--muted-light); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+.svc .foot{ margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 16px; border-top: 1px solid var(--rule-light); }
+.svc .price{ font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-light); }
+@media (max-width: 880px){
+  .services-grid{ grid-template-columns: 1fr; }
+  .svc{ min-height: auto; }
+}
+
+/* Service icon shapes (pure CSS/SVG) */
+.ico svg{ width:100%; height:100%; display:block; }
+.ico .stroke{ stroke: var(--ink); fill: none; stroke-width: 1.4; }
+.ico .fill{ fill: var(--accent); stroke: var(--ink); stroke-width: 1.4; }
+
+/* ============================== Case study ============================== */
+.case{ position: relative; }
+.case .layout{
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: stretch;
+}
+.case .left h2{ margin-bottom: 24px; }
+.case .left .lede{ margin-bottom: 36px; max-width: 44ch; }
+.case .meta-list{
+  list-style: none; margin: 36px 0 0; padding: 0;
+  border-top: 1px solid var(--rule-dark);
+}
+.case .meta-list li{
+  display:grid; grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-dark);
+  font-size: 14px;
+}
+.case .meta-list .k{
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted-dark);
+}
+.case .meta-list .v{ color: var(--light); }
+.case .meta-list .v strong{ color: var(--accent); font-weight: 500; font-style: italic; font-family: var(--display); font-size: 16px; }
+.case .actions{ display:flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+.case .actions .btn--accent .arrow{ background: var(--dark); color: var(--accent); }
+
+.case .visual{
+  background: linear-gradient(135deg, #1c1f18 0%, #14160f 100%);
+  border: 1px solid var(--rule-dark);
+  position: relative;
+  overflow: hidden;
+  min-height: 540px;
+  border-radius: 4px;
+}
+.case .visual::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(200,255,62,0.08) 39px 40px),
+    repeating-linear-gradient(0deg,  transparent 0 39px, rgba(200,255,62,0.06) 39px 40px);
+  mask-image: radial-gradient(70% 60% at 50% 40%, #000 35%, transparent 80%);
+}
+.case .visual .label{
+  position: absolute; top: 18px; left: 18px;
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted-dark);
+  display: flex; gap: 8px; align-items: center;
+}
+.case .visual .label::before{ content:""; width: 6px; height: 6px; background: var(--accent); border-radius:50%; }
+.case .visual .tag-tr{
+  position: absolute; top: 18px; right: 18px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted-dark);
+}
+
+/* Roadmap timeline inside visual */
+.roadmap{
+  position: absolute; left: 8%; right: 8%; bottom: 12%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.roadmap .step{
+  border: 1px solid var(--rule-dark);
+  padding: 14px 14px 16px;
+  background: rgba(243,238,227,0.02);
+  position: relative;
+  border-radius: 3px;
+  backdrop-filter: blur(2px);
+}
+.roadmap .step .when{
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent);
+}
+.roadmap .step h4{
+  font-family: var(--display); font-weight: 400;
+  font-size: 18px; letter-spacing: -0.01em;
+  margin: 10px 0 4px; color: var(--light);
+  line-height: 1.1;
+}
+.roadmap .step p{ font-size: 12px; color: var(--muted-dark); margin: 0; }
+.roadmap .step.active{
+  border-color: var(--accent);
+  background: rgba(200,255,62,0.08);
+}
+/* Floating callouts inside visual */
+.callout{
+  position: absolute;
+  background: rgba(14,15,12,0.78);
+  border: 1px solid var(--rule-dark);
+  padding: 12px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--light);
+  max-width: 220px;
+  backdrop-filter: blur(8px);
+}
+.callout .c-k{
+  font-family: var(--mono); font-size: 10px; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase; display:block; margin-bottom: 4px;
+}
+.callout.c1{ top: 18%; left: 8%; }
+.callout.c2{ top: 28%; right: 8%; }
+.callout.c3{ top: 50%; left: 28%; }
+
+@media (max-width: 980px){
+  .case .layout{ grid-template-columns: 1fr; }
+  .case .visual{ min-height: 460px; }
+  .roadmap{ grid-template-columns: repeat(2,1fr); }
+}
+
+/* ============================== About / founder ============================== */
+.about{ background: var(--light-2); }
+.about .layout{
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.about .photo{
+  aspect-ratio: 4/5;
+  background:
+    repeating-linear-gradient(135deg, #d8d1c2 0 12px, #cfc7b6 12px 24px);
+  border: 1px solid var(--rule-light);
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.about .photo::after{
+  content: "PORTRAIT · FRANÇOIS";
+  position: absolute; bottom: 16px; left: 16px;
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.14em;
+  color: rgba(20,20,15,0.5);
+}
+.about .photo .ph-frame{
+  position: absolute; top: 16px; left: 16px; right: 16px;
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.14em; color: rgba(20,20,15,0.45);
+  display: flex; justify-content: space-between;
+}
+.about h2{ margin-bottom: 28px; max-width: 18ch; }
+.about h2 em{ color: var(--accent-deep); }
+.about .bio{ font-size: 16.5px; max-width: 52ch; color: var(--ink); line-height: 1.55; }
+.about .bio p + p{ margin-top: 18px; }
+.about .creds{
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px;
+}
+.about .creds .chip{
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--rule-light);
+  border-radius: 999px;
+  font-size: 13px;
+  background: var(--paper);
+}
+.about .creds .chip::before{
+  content: ""; width:5px; height:5px; border-radius: 50%; background: var(--accent-deep);
+}
+.about .links{ margin-top: 32px; display:flex; gap: 18px; }
+
+@media (max-width: 880px){
+  .about .layout{ grid-template-columns: 1fr; }
+}
+
+/* ============================== Manifesto ============================== */
+.manifesto{ background: var(--dark); }
+.manifesto .quote{
+  font-family: var(--display);
+  font-size: clamp(32px, 4.6vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+.manifesto .quote em{ color: var(--accent); font-style: italic; font-weight: 300; }
+.manifesto .quote .mark{ color: var(--accent); }
+.manifesto .signature{
+  margin-top: 48px;
+  display: flex; align-items: center; gap: 16px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted-dark);
+}
+.manifesto .signature::before{
+  content:""; width: 40px; height: 1px; background: var(--accent);
+}
+
+.manifesto .pillars{
+  margin-top: clamp(56px, 8vw, 100px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-dark);
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+}
+.manifesto .pillars > div{
+  background: var(--dark);
+  padding: 28px 24px;
+}
+.manifesto .pillars .p-num{
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent);
+}
+.manifesto .pillars h4{
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 26px);
+  letter-spacing: -0.01em;
+  margin: 14px 0 10px;
+}
+.manifesto .pillars h4 em{ font-style: italic; font-weight: 300; color: var(--accent); }
+.manifesto .pillars p{ color: var(--muted-dark); font-size: 14px; margin: 0; }
+@media (max-width: 880px){
+  .manifesto .pillars{ grid-template-columns: 1fr; }
+}
+
+/* ============================== Form ============================== */
+.lead{ background: var(--paper); }
+.lead .layout{
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(32px, 5vw, 96px);
+  align-items: start;
+}
+.lead h2{ max-width: 14ch; margin-bottom: 24px; }
+.lead .blurb{ color: var(--muted-light); max-width: 38ch; }
+.lead .availability{
+  margin-top: 32px;
+  border-top: 1px solid var(--rule-light);
+  border-bottom: 1px solid var(--rule-light);
+  padding: 18px 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.lead .availability .dot{ width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 4px rgba(74,222,128,0.18); }
+
+.form{
+  background: var(--light-2);
+  border: 1px solid var(--rule-light);
+  padding: clamp(28px, 4vw, 44px);
+  border-radius: 4px;
+}
+.form .row{
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+}
+.field{ display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.field label{
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted-light);
+}
+.field label .req{ color: var(--accent-deep); }
+.field input, .field textarea, .field select{
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(20,20,15,0.25);
+  padding: 10px 0;
+  outline: none;
+  transition: border-color .25s ease;
+  resize: none;
+}
+.field input::placeholder, .field textarea::placeholder{ color: rgba(20,20,15,0.35); }
+.field input:focus, .field textarea:focus, .field select:focus{ border-color: var(--ink); }
+.field textarea{ min-height: 96px; }
+.chips{
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px;
+}
+.chips input[type="radio"]{ position: absolute; opacity: 0; pointer-events: none; }
+.chips label{
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid rgba(20,20,15,0.18);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  background: var(--paper);
+  cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s, transform .15s;
+}
+.chips label:hover{ border-color: var(--ink); }
+.chips input[type="radio"]:checked + label{
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.form .submit-row{
+  margin-top: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.form .legal{
+  font-size: 11.5px;
+  color: var(--muted-light);
+  max-width: 36ch;
+  line-height: 1.4;
+}
+.form .submit-row .btn{ --bg: var(--ink); --fg: var(--paper); --bd: var(--ink); }
+
+.form-success{
+  display: none;
+  padding: 28px;
+  text-align: left;
+}
+.form-success.show{ display:block; }
+.form-success h3{ font-size: 28px; margin-bottom: 8px; }
+.form-success p{ color: var(--muted-light); margin: 0; max-width: 40ch; }
+
+@media (max-width: 880px){
+  .lead .layout{ grid-template-columns: 1fr; }
+  .form .row{ grid-template-columns: 1fr; }
+}
+
+/* ============================== Footer ============================== */
+.foot{
+  background: var(--dark);
+  color: var(--light);
+  padding: clamp(60px, 8vw, 96px) 0 32px;
+}
+.foot .top{
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--rule-dark);
+}
+.foot h5{
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted-dark);
+  font-weight: 500;
+  margin: 0 0 18px;
+}
+.foot ul{ list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14.5px; }
+.foot ul a{ color: var(--light); opacity: .85; transition: opacity .2s; }
+.foot ul a:hover{ opacity: 1; }
+.foot .brand-block .mark{
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 56px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.foot .brand-block .mark sup{
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-left: 4px;
+  vertical-align: top;
+}
+.foot .brand-block p{ color: var(--muted-dark); margin: 18px 0 0; max-width: 32ch; font-size: 14px; }
+.foot .bottom{
+  margin-top: 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 18px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted-dark);
+}
+.foot .bottom .badge{
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--rule-dark);
+  border-radius: 999px;
+  color: var(--accent);
+}
+.foot .bottom .badge::before{ content:""; width:6px; height:6px; background: var(--accent); border-radius:50%; }
+@media (max-width: 880px){
+  .foot .top{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px){
+  .foot .top{ grid-template-columns: 1fr; }
+}
+
+/* ============================== Scroll-reveal ============================== */
+.reveal{ opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.in{ opacity: 1; transform: none; }
+.reveal-1{ transition-delay: .05s; }
+.reveal-2{ transition-delay: .12s; }
+.reveal-3{ transition-delay: .19s; }
+.reveal-4{ transition-delay: .26s; }
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal-1, .reveal-2, .reveal-3, .reveal-4{ opacity: 1; transform: none; transition: none; }
+  .ticker-track{ animation: none; }
+}
+
+/* small util */
+.row-flex{ display:flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.muted{ color: var(--muted-light); }
+section.dark .muted{ color: var(--muted-dark); }
+.sep{ height:1px; background: var(--rule-light); border:0; margin: 28px 0; }
+section.dark .sep{ background: var(--rule-dark); }
+</style>
+</head>
+<body>
+
+<!-- ====================================================================== NAV -->
+<header class="nav" id="nav" data-screen-label="Nav">
+  <div class="wrap row">
+    <a href="#top" class="brand" aria-label="Taquae">
+      <span class="dot"></span>
+      Taquae<small>Consulting</small>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#services">Services</a>
+      <a href="#case">Cas d'usage</a>
+      <a href="#about">À propos</a>
+      <a href="#approach">Approche</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="tablist" aria-label="Langue">
+        <button data-lang="fr" class="active" role="tab">FR</button>
+        <button data-lang="en" role="tab">EN</button>
+        <button data-lang="de" role="tab">DE</button>
+      </div>
+      <a href="#contact" class="cta-mini">
+        Diagnostic gratuit
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ====================================================================== HERO -->
+<section class="hero dark" id="top" data-nav="dark" data-screen-label="Hero">
+  <div class="wrap">
+
+    <div class="meta-bar reveal">
+      <div class="left">
+        <span class="badge" data-i18n="hero.badge"><span class="ping"></span>Lancement officiel · janv. 2027</span>
+        <span class="kicker" data-i18n="hero.where">Paris · Frankfurt · Accra</span>
+      </div>
+      <div class="kicker">
+        <span data-i18n="hero.index">— 00 / Stratégie IA</span>
+      </div>
+    </div>
+
+    <h1 class="display reveal reveal-1" data-i18n="hero.h1">
+      Exploiter <em>l'IA</em><br/>sans risque&nbsp;:<br/>
+      <span class="accent">stratégie</span> avant<br/>technologie.
+    </h1>
+
+    <div class="sub-row reveal reveal-2">
+      <p class="lede" data-i18n="hero.sub">
+        Conseil de fond pour PME industrielles et organisations du développement
+        qui veulent intégrer l'IA — vite, juste, et sans dépendance technologique.
+      </p>
+      <div class="actions">
+        <a href="#contact" class="btn">
+          <span data-i18n="hero.cta1">Demander un diagnostic gratuit</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="#approach" class="btn btn--ghost">
+          <span data-i18n="hero.cta2">Notre approche</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="ticker reveal reveal-3" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Audit IA</span><span>Stratégie long terme</span><span>Mise en œuvre</span>
+        <span>Manufacturing</span><span>Services financiers</span><span>Secteur du développement</span>
+        <span>Feuille de route</span><span>Quick wins</span><span>Souveraineté</span>
+        <span>Audit IA</span><span>Stratégie long terme</span><span>Mise en œuvre</span>
+        <span>Manufacturing</span><span>Services financiers</span><span>Secteur du développement</span>
+        <span>Feuille de route</span><span>Quick wins</span><span>Souveraineté</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== TRUST -->
+<section class="trust dark" data-nav="dark">
+  <div class="wrap">
+    <div class="trust-grid reveal">
+      <div>
+        <span class="n"><em>20</em>+</span>
+        <span class="lbl" data-i18n="trust.1">Années de carrière internationale</span>
+      </div>
+      <div>
+        <span class="n"><em>6</em></span>
+        <span class="lbl" data-i18n="trust.2">Ans à la GIZ — coopération allemande, Ghana</span>
+      </div>
+      <div>
+        <span class="n"><em>3</em></span>
+        <span class="lbl" data-i18n="trust.3">Secteurs d'expertise : industrie, finance, développement</span>
+      </div>
+      <div>
+        <span class="n"><em>2</em></span>
+        <span class="lbl" data-i18n="trust.4">Cultures de travail : France &amp; Allemagne</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== SERVICES -->
+<section class="services light" id="services" data-nav="light" data-screen-label="Services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row reveal">
+        <div>
+          <span class="eyebrow" data-i18n="svc.eye">— 01 / Services</span>
+          <h2 class="h2" style="margin-top:14px" data-i18n="svc.h2">Trois manières d'avancer <em>avec méthode</em>.</h2>
+        </div>
+        <p class="lede" style="max-width: 38ch" data-i18n="svc.sub">
+          De l'audit ponctuel à la mise en œuvre opérationnelle :
+          un format adapté à chaque maturité.
+        </p>
+      </div>
+    </div>
+
+    <div class="services-grid reveal">
+      <!-- Service 1 -->
+      <article class="svc">
+        <span class="num">01 — Audit</span>
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 56 56">
+            <circle cx="24" cy="24" r="14" class="stroke"/>
+            <line x1="34" y1="34" x2="46" y2="46" class="stroke"/>
+            <circle cx="24" cy="24" r="4" class="fill"/>
+          </svg>
+        </div>
+        <h3 class="h3" data-i18n="svc.1.h">Audit IA</h3>
+        <p data-i18n="svc.1.p">Pour les PME qui veulent identifier précisément <em>où</em> l'IA crée de la valeur — et où elle introduit du risque.</p>
+        <ul>
+          <li><span>Cartographie des processus</span><span class="meta">3j</span></li>
+          <li><span>Identification opportunités &amp; risques</span><span class="meta">15+ entretiens</span></li>
+          <li><span>Priorisation &amp; quick wins</span><span class="meta">Roadmap</span></li>
+        </ul>
+        <div class="foot">
+          <span class="price">2–3 jours · €4k–6k</span>
+          <a class="link" href="#contact">En savoir plus →</a>
+        </div>
+      </article>
+      <!-- Service 2 -->
+      <article class="svc">
+        <span class="num">02 — Stratégie</span>
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 56 56">
+            <polyline points="6,42 20,28 30,36 50,12" class="stroke"/>
+            <circle cx="20" cy="28" r="3" class="fill"/>
+            <circle cx="30" cy="36" r="3" class="fill"/>
+            <circle cx="50" cy="12" r="3" class="fill"/>
+          </svg>
+        </div>
+        <h3 class="h3" data-i18n="svc.2.h">Accompagnement stratégique</h3>
+        <p data-i18n="svc.2.p">Intégrer l'IA dans la stratégie long terme : vision, budget, gouvernance, montée en compétence.</p>
+        <ul>
+          <li><span>Vision IA à 24–36 mois</span><span class="meta">Comex</span></li>
+          <li><span>Budget &amp; ingénierie financière</span><span class="meta">CapEx / OpEx</span></li>
+          <li><span>Feuille de route &amp; gouvernance</span><span class="meta">Trimestriel</span></li>
+        </ul>
+        <div class="foot">
+          <span class="price">Journées de conseil</span>
+          <a class="link" href="#contact">En savoir plus →</a>
+        </div>
+      </article>
+      <!-- Service 3 -->
+      <article class="svc">
+        <span class="num">03 — Mise en œuvre</span>
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 56 56">
+            <rect x="8" y="8" width="40" height="40" rx="2" class="stroke"/>
+            <line x1="8" y1="22" x2="48" y2="22" class="stroke"/>
+            <rect x="14" y="28" width="14" height="14" class="fill"/>
+            <line x1="32" y1="32" x2="44" y2="32" class="stroke"/>
+            <line x1="32" y1="38" x2="44" y2="38" class="stroke"/>
+          </svg>
+        </div>
+        <h3 class="h3" data-i18n="svc.3.h">Mise en œuvre technique</h3>
+        <p data-i18n="svc.3.p">Démarrer un projet IA avec un appui expert : delivery, intégration, et transfert de compétences à vos équipes.</p>
+        <ul>
+          <li><span>Cadrage technique &amp; PoC</span><span class="meta">4–8 sem.</span></li>
+          <li><span>Intégration &amp; déploiement</span><span class="meta">Forfait</span></li>
+          <li><span>Transfert de compétence interne</span><span class="meta">Formation</span></li>
+        </ul>
+        <div class="foot">
+          <span class="price">Forfait projet</span>
+          <a class="link" href="#contact">En savoir plus →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== CASE STUDY -->
+<section class="case dark" id="case" data-nav="dark" data-screen-label="Case study">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row reveal">
+        <div>
+          <span class="eyebrow" data-i18n="case.eye">— 02 / Cas d'usage en vedette</span>
+          <h2 class="h2" style="margin-top:14px" data-i18n="case.h2">Audit IA &mdash; PME du <em>bois &amp; menuiserie</em>.</h2>
+        </div>
+        <p class="lede" style="max-width: 38ch" data-i18n="case.sub">
+          Trois jours sur site, quinze entretiens, une feuille de route à 24 mois.
+        </p>
+      </div>
+    </div>
+
+    <div class="layout reveal">
+      <div class="left">
+        <p class="lede" data-i18n="case.l1">
+          Un fabricant de portes &amp; fenêtres bois / aluminium (~40 collaborateurs)
+          souhaitait comprendre où l'IA pouvait alléger sa supply chain, réduire les coûts
+          de non-qualité et soulager son bureau d'études.
+        </p>
+        <ul class="meta-list">
+          <li><span class="k">Contexte</span><span class="v">PME industrielle 30–50 salariés · ERP legacy</span></li>
+          <li><span class="k">Mission</span><span class="v">Audit IA 3 jours · 15+ entretiens · process mapping</span></li>
+          <li><span class="k">Livrables</span><span class="v">Roadmap 24 mois · 3 quick wins · business case ROI</span></li>
+          <li><span class="k">Impact projeté</span><span class="v"><strong>−18%</strong> coût matière · <strong>+9 pts</strong> marge brute</span></li>
+        </ul>
+        <div class="actions">
+          <a href="#contact" class="btn btn--accent">
+            Lire le cas complet
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a href="#contact" class="btn btn--ghost">Briefing similaire ?</a>
+        </div>
+      </div>
+
+      <div class="visual" aria-hidden="true">
+        <span class="label">Process map · Atelier menuiserie</span>
+        <span class="tag-tr">Vue audit</span>
+
+        <div class="callout c1">
+          <span class="c-k">Quick win #1</span>
+          Optimisation découpe — IA générative pour plans d'optimisation des chutes.
+        </div>
+        <div class="callout c2">
+          <span class="c-k">Quick win #2</span>
+          Prédiction de défauts à partir des photos de contrôle qualité.
+        </div>
+        <div class="callout c3">
+          <span class="c-k">Quick win #3</span>
+          Assistant devis pour le bureau d'études — réduction du cycle de 38%.
+        </div>
+
+        <div class="roadmap">
+          <div class="step active">
+            <span class="when">M0 — M3</span>
+            <h4>Quick wins</h4>
+            <p>Optimisation découpe &amp; contrôle qualité.</p>
+          </div>
+          <div class="step">
+            <span class="when">M4 — M9</span>
+            <h4>Supply chain</h4>
+            <p>Prévision demande, pilotage stock.</p>
+          </div>
+          <div class="step">
+            <span class="when">M10 — M18</span>
+            <h4>Devis assisté</h4>
+            <p>Bureau d'études augmenté.</p>
+          </div>
+          <div class="step">
+            <span class="when">M19 — M24</span>
+            <h4>Pilotage</h4>
+            <p>Comité IA &amp; gouvernance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== ABOUT -->
+<section class="about light" id="about" data-nav="light" data-screen-label="About">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row reveal">
+        <div>
+          <span class="eyebrow" data-i18n="about.eye">— 03 / À propos</span>
+          <h2 class="h2" style="margin-top:14px" data-i18n="about.h2">Ingénieur. Cadre international. <em>6 ans GIZ Ghana.</em></h2>
+        </div>
+        <p class="lede" style="max-width: 36ch" data-i18n="about.sub">
+          Un consultant qui parle business avant tech — et qui sait livrer la tech quand elle est nécessaire.
+        </p>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="photo reveal" aria-label="Photo de François Meysembourg — placeholder">
+        <div class="ph-frame"><span>PORTRAIT</span><span>v1.0</span></div>
+      </div>
+
+      <div class="reveal reveal-1">
+        <div class="bio">
+          <p>
+            <strong>François Meysembourg</strong> est ingénieur binational France / Allemagne.
+            Après une carrière internationale dans l'automobile, la fabrication bois et la grande
+            distribution, il a passé six ans à la <em>GIZ</em> au Ghana — où il s'est spécialisé en
+            ingénierie financière du développement.
+          </p>
+          <p>
+            Il a fondé <strong>Taquae</strong> pour combler un vide : trop de projets IA isolés,
+            pas assez de conseil stratégique de fond. La promesse — comprendre votre métier
+            <em>avant</em> de parler technologie.
+          </p>
+        </div>
+
+        <div class="creds">
+          <span class="chip">Formation Allegria · IA stratégique</span>
+          <span class="chip">GIZ · Ghana 2018–2024</span>
+          <span class="chip">Automotive · Manufacturing</span>
+          <span class="chip">FR · DE · EN</span>
+        </div>
+
+        <div class="links">
+          <a href="#" class="link">LinkedIn — François Meysembourg</a>
+          <a href="#contact" class="link">Discuter 30 min</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== MANIFESTO -->
+<section class="manifesto dark" id="approach" data-nav="dark" data-screen-label="Approach">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-i18n="m.eye">— 04 / Méthode</span>
+    <p class="quote reveal reveal-1" style="margin-top: 22px">
+      <span class="mark">«</span>&nbsp;Une IA installée sur une stratégie absente, c'est
+      <em>un outil coûteux qui finit oublié</em>. Notre travail : la rendre indispensable.&nbsp;<span class="mark">»</span>
+    </p>
+    <div class="signature reveal reveal-2">François Meysembourg · Fondateur, Taquae</div>
+
+    <div class="pillars">
+      <div class="reveal reveal-1">
+        <span class="p-num">P1</span>
+        <h4>Comprendre <em>le métier</em>.</h4>
+        <p>Pas de buzzwords. On commence par les chiffres, les flux, les frustrations terrain.</p>
+      </div>
+      <div class="reveal reveal-2">
+        <span class="p-num">P2</span>
+        <h4>Choisir <em>le bon levier</em>.</h4>
+        <p>L'IA est un moyen parmi d'autres. Parfois la bonne réponse est ailleurs — on le dit.</p>
+      </div>
+      <div class="reveal reveal-3">
+        <span class="p-num">P3</span>
+        <h4>Transférer <em>les compétences</em>.</h4>
+        <p>L'objectif n'est pas votre dépendance. C'est votre autonomie sur 24 mois.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== LEAD FORM -->
+<section class="lead light" id="contact" data-nav="light" data-screen-label="Contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="row reveal">
+        <div>
+          <span class="eyebrow" data-i18n="lead.eye">— 05 / Diagnostic gratuit</span>
+          <h2 class="h2" style="margin-top:14px" data-i18n="lead.h2">Un défi IA en tête ? <em>Parlons-en.</em></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="reveal">
+        <p class="blurb" data-i18n="lead.blurb">
+          Quelques lignes suffisent pour démarrer. Vous recevez sous 48&nbsp;h une première
+          lecture — et la proposition d'un appel de 30 minutes, sans engagement.
+        </p>
+        <div class="availability">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Disponibilités · juin–juillet 2026</span>
+          <span>2 missions ouvertes</span>
+        </div>
+        <div class="links" style="margin-top: 28px; display:flex; flex-direction: column; gap: 14px; font-size: 14px;">
+          <a class="link" href="mailto:francois@taquae.com">francois@taquae.com</a>
+          <a class="link" href="#">LinkedIn · François Meysembourg</a>
+          <a class="link" href="#">Réserver 30 min · Calendly</a>
+        </div>
+      </div>
+
+      <form class="form reveal reveal-1" id="leadForm" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="f-name">Nom <span class="req">*</span></label>
+            <input id="f-name" name="name" type="text" placeholder="Jean Martin" required />
+          </div>
+          <div class="field">
+            <label for="f-email">Email <span class="req">*</span></label>
+            <input id="f-email" name="email" type="email" placeholder="jean@entreprise.fr" required />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-org">Entreprise</label>
+            <input id="f-org" name="org" type="text" placeholder="ACME Menuiserie" />
+          </div>
+          <div class="field">
+            <label for="f-role">Rôle</label>
+            <input id="f-role" name="role" type="text" placeholder="Directeur opérations" />
+          </div>
+        </div>
+
+        <div class="field" style="margin-top: 6px;">
+          <label>Quel sujet vous amène ?</label>
+          <div class="chips" role="radiogroup">
+            <input type="radio" id="t1" name="topic" value="audit" checked />
+            <label for="t1">Audit IA</label>
+            <input type="radio" id="t2" name="topic" value="strategy" />
+            <label for="t2">Stratégie</label>
+            <input type="radio" id="t3" name="topic" value="implementation" />
+            <label for="t3">Mise en œuvre</label>
+            <input type="radio" id="t4" name="topic" value="manufacturing" />
+            <label for="t4">Manufacturing</label>
+            <input type="radio" id="t5" name="topic" value="dev" />
+            <label for="t5">Secteur développement</label>
+            <input type="radio" id="t6" name="topic" value="other" />
+            <label for="t6">Autre</label>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top: 14px;">
+          <label for="f-msg">Décrivez votre défi en 2–3 phrases <span class="req">*</span></label>
+          <textarea id="f-msg" name="message" placeholder="Notre supply chain est sous tension et nous voulons savoir où l'IA peut nous aider…" required></textarea>
+        </div>
+
+        <div class="submit-row">
+          <p class="legal">Vos informations ne servent qu'à organiser un premier échange. Aucun partage, aucun envoi marketing.</p>
+          <button class="btn" type="submit">
+            <span>Envoyer la demande</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>
+
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+          <h3 class="h3">Merci — message reçu.</h3>
+          <p>François revient vers vous sous 48 heures, depuis francois@taquae.com. À très vite.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== FOOTER -->
+<footer class="foot dark" data-nav="dark" data-screen-label="Footer">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand-block">
+        <div class="mark">Taquae<sup>®</sup></div>
+        <p>Conseil en stratégie IA pour PME industrielles et organisations du développement. Paris &amp; Frankfurt.</p>
+      </div>
+      <div>
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#case">Cas d'usage</a></li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#approach">Approche</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Expertises</h5>
+        <ul>
+          <li><a href="#">Manufacturing &amp; industrie</a></li>
+          <li><a href="#">Services financiers</a></li>
+          <li><a href="#">Secteur du développement</a></li>
+          <li><a href="#">Cabinets &amp; consulting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:francois@taquae.com">francois@taquae.com</a></li>
+          <li><a href="#">LinkedIn — François M.</a></li>
+          <li><a href="#">Calendly — 30 min</a></li>
+          <li><a href="#">Paris · Frankfurt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Taquae SASU · RCS Paris</span>
+      <span class="badge">v1.0 Beta · Lancement officiel 2027-01</span>
+      <span><a href="#">Mentions légales</a> &nbsp;·&nbsp; <a href="#">Confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================== Nav scroll behavior */
+(function(){
+  const nav = document.getElementById('nav');
+  const sections = [...document.querySelectorAll('[data-nav]')];
+  function update(){
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 16);
+    // detect which section the nav is over
+    const navH = nav.getBoundingClientRect().height;
+    const probeY = navH / 2 + 4;
+    let over = 'dark';
+    for(const s of sections){
+      const r = s.getBoundingClientRect();
+      if(r.top <= probeY && r.bottom >= probeY){
+        over = s.dataset.nav;
+        break;
+      }
+    }
+    nav.classList.toggle('over-light', over === 'light');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* =========================================================== Reveal on scroll */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(e => e.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  els.forEach(e => io.observe(e));
+})();
+
+/* =========================================================== Language switch (visual only) */
+(function(){
+  const map = {
+    fr: {
+      'hero.badge':'Lancement officiel · janv. 2027',
+      'hero.where':'Paris · Frankfurt · Accra',
+      'hero.index':'— 00 / Stratégie IA',
+      'hero.h1':'Exploiter <em>l\u2019IA</em><br/>sans risque\u00a0:<br/><span class="accent">stratégie</span> avant<br/>technologie.',
+      'hero.sub':'Conseil de fond pour PME industrielles et organisations du développement qui veulent intégrer l\u2019IA — vite, juste, et sans dépendance technologique.',
+      'hero.cta1':'Demander un diagnostic gratuit',
+      'hero.cta2':'Notre approche',
+      'trust.1':'Années de carrière internationale',
+      'trust.2':'Ans à la GIZ — coopération allemande, Ghana',
+      'trust.3':'Secteurs d\u2019expertise : industrie, finance, développement',
+      'trust.4':'Cultures de travail : France &amp; Allemagne',
+      'svc.eye':'— 01 / Services',
+      'svc.h2':'Trois manières d\u2019avancer <em>avec méthode</em>.',
+      'svc.sub':'De l\u2019audit ponctuel à la mise en œuvre opérationnelle : un format adapté à chaque maturité.',
+      'svc.1.h':'Audit IA',
+      'svc.1.p':'Pour les PME qui veulent identifier précisément <em>où</em> l\u2019IA crée de la valeur — et où elle introduit du risque.',
+      'svc.2.h':'Accompagnement stratégique',
+      'svc.2.p':'Intégrer l\u2019IA dans la stratégie long terme : vision, budget, gouvernance, montée en compétence.',
+      'svc.3.h':'Mise en œuvre technique',
+      'svc.3.p':'Démarrer un projet IA avec un appui expert : delivery, intégration, et transfert de compétences à vos équipes.',
+      'case.eye':'— 02 / Cas d\u2019usage en vedette',
+      'case.h2':'Audit IA &mdash; PME du <em>bois &amp; menuiserie</em>.',
+      'case.sub':'Trois jours sur site, quinze entretiens, une feuille de route à 24 mois.',
+      'case.l1':'Un fabricant de portes &amp; fenêtres bois / aluminium (~40 collaborateurs) souhaitait comprendre où l\u2019IA pouvait alléger sa supply chain, réduire les coûts de non-qualité et soulager son bureau d\u2019études.',
+      'about.eye':'— 03 / À propos',
+      'about.h2':'Ingénieur. Cadre international. <em>6 ans GIZ Ghana.</em>',
+      'about.sub':'Un consultant qui parle business avant tech — et qui sait livrer la tech quand elle est nécessaire.',
+      'm.eye':'— 04 / Méthode',
+      'lead.eye':'— 05 / Diagnostic gratuit',
+      'lead.h2':'Un défi IA en tête ? <em>Parlons-en.</em>',
+      'lead.blurb':'Quelques lignes suffisent pour démarrer. Vous recevez sous 48\u00a0h une première lecture — et la proposition d\u2019un appel de 30 minutes, sans engagement.'
+    },
+    en: {
+      'hero.badge':'Official launch · Jan 2027',
+      'hero.where':'Paris · Frankfurt · Accra',
+      'hero.index':'— 00 / AI strategy',
+      'hero.h1':'Make <em>AI</em> work<br/>without risk:<br/><span class="accent">strategy</span> before<br/>technology.',
+      'hero.sub':'Deep advisory for industrial SMEs and development organisations that want to adopt AI — quickly, soundly, and without lock-in.',
+      'hero.cta1':'Request a free diagnostic',
+      'hero.cta2':'Our approach',
+      'trust.1':'Years of international career',
+      'trust.2':'Years at GIZ — German cooperation, Ghana',
+      'trust.3':'Sectors: industry, finance, development',
+      'trust.4':'Working cultures: France &amp; Germany',
+      'svc.eye':'— 01 / Services',
+      'svc.h2':'Three ways to move forward <em>with method</em>.',
+      'svc.sub':'From a one-shot audit to operational delivery — a format for every maturity level.',
+      'svc.1.h':'AI Audit',
+      'svc.1.p':'For SMEs that want to identify precisely <em>where</em> AI creates value — and where it introduces risk.',
+      'svc.2.h':'Strategic advisory',
+      'svc.2.p':'Embed AI into long-term strategy: vision, budget, governance, capability ramp-up.',
+      'svc.3.h':'Technical delivery',
+      'svc.3.p':'Start an AI project with expert support: delivery, integration, and skills transfer to your teams.',
+      'case.eye':'— 02 / Featured case',
+      'case.h2':'AI Audit &mdash; <em>wood &amp; joinery</em> SME.',
+      'case.sub':'Three days on site, fifteen interviews, a 24-month roadmap.',
+      'case.l1':'A maker of wood / aluminium doors &amp; windows (~40 employees) wanted to understand where AI could ease its supply chain, cut quality costs and lift the engineering desk.',
+      'about.eye':'— 03 / About',
+      'about.h2':'Engineer. International executive. <em>6 years GIZ Ghana.</em>',
+      'about.sub':'A consultant who speaks business before tech — and who can deliver the tech when needed.',
+      'm.eye':'— 04 / Method',
+      'lead.eye':'— 05 / Free diagnostic',
+      'lead.h2':'An AI challenge on your mind? <em>Let\u2019s talk.</em>',
+      'lead.blurb':'A few lines are enough to start. You\u2019ll get a first reading within 48 hours — and the offer of a 30-minute call, no strings attached.'
+    },
+    de: {
+      'hero.badge':'Offizieller Launch · Jan 2027',
+      'hero.where':'Paris · Frankfurt · Accra',
+      'hero.index':'— 00 / KI-Strategie',
+      'hero.h1':'<em>KI</em> nutzen,<br/>ohne Risiko:<br/><span class="accent">Strategie</span> vor<br/>Technologie.',
+      'hero.sub':'Tiefgreifende Beratung für industrielle KMU und Entwicklungsorganisationen, die KI schnell, fundiert und ohne Abhängigkeit einsetzen wollen.',
+      'hero.cta1':'Kostenlose Erstanalyse anfragen',
+      'hero.cta2':'Unser Ansatz',
+      'trust.1':'Jahre internationale Erfahrung',
+      'trust.2':'Jahre bei der GIZ — Ghana',
+      'trust.3':'Branchen: Industrie, Finanzen, Entwicklung',
+      'trust.4':'Arbeitskulturen: Frankreich &amp; Deutschland',
+      'svc.eye':'— 01 / Leistungen',
+      'svc.h2':'Drei Wege, mit <em>Methode</em> voranzukommen.',
+      'svc.sub':'Vom punktuellen Audit bis zur operativen Umsetzung — passend zu jedem Reifegrad.',
+      'svc.1.h':'KI-Audit',
+      'svc.1.p':'Für KMU, die genau wissen wollen, <em>wo</em> KI Wert schafft — und wo sie Risiken bringt.',
+      'svc.2.h':'Strategische Begleitung',
+      'svc.2.p':'KI in die Langfriststrategie einbinden: Vision, Budget, Governance, Kompetenzaufbau.',
+      'svc.3.h':'Technische Umsetzung',
+      'svc.3.p':'KI-Projekte mit Expertenbegleitung starten: Delivery, Integration und Wissenstransfer.',
+      'case.eye':'— 02 / Referenzfall',
+      'case.h2':'KI-Audit &mdash; KMU <em>Holz &amp; Tischlerei</em>.',
+      'case.sub':'Drei Tage vor Ort, fünfzehn Gespräche, eine 24-Monats-Roadmap.',
+      'case.l1':'Ein Hersteller von Türen &amp; Fenstern aus Holz / Aluminium (~40 Mitarbeitende) wollte verstehen, wo KI die Lieferkette entlastet, Qualitätskosten senkt und das Konstruktionsbüro entlastet.',
+      'about.eye':'— 03 / Über',
+      'about.h2':'Ingenieur. Internationale Führungskraft. <em>6 Jahre GIZ Ghana.</em>',
+      'about.sub':'Ein Berater, der Geschäft vor Technologie spricht — und Technologie liefert, wenn sie gebraucht wird.',
+      'm.eye':'— 04 / Methode',
+      'lead.eye':'— 05 / Kostenlose Erstanalyse',
+      'lead.h2':'Eine KI-Frage im Kopf? <em>Sprechen wir.</em>',
+      'lead.blurb':'Wenige Zeilen genügen. Sie erhalten innerhalb von 48\u00a0Stunden eine erste Einordnung — und das Angebot eines 30-Minuten-Gesprächs, unverbindlich.'
+    }
+  };
+  const buttons = document.querySelectorAll('.lang button');
+  function apply(lang){
+    document.documentElement.lang = lang;
+    const dict = map[lang]; if(!dict) return;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.dataset.i18n;
+      if(dict[k] !== undefined) el.innerHTML = dict[k];
+    });
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  }
+  buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
+})();
+
+/* =========================================================== Form */
+(function(){
+  const form = document.getElementById('leadForm');
+  const success = document.getElementById('formSuccess');
+  if(!form) return;
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = form.querySelector('#f-name');
+    const email = form.querySelector('#f-email');
+    const msg = form.querySelector('#f-msg');
+    let ok = true;
+    [name, email, msg].forEach(f => {
+      if(!f.value.trim()){ f.style.borderBottomColor = '#B83C2E'; ok = false; }
+      else { f.style.borderBottomColor = ''; }
+    });
+    if(!ok) return;
+    // Hide form fields, show success
+    [...form.children].forEach(c => { if(c !== success) c.style.display = 'none'; });
+    success.classList.add('show');
+    success.scrollIntoView && false; // never scrollIntoView; visible already
+  });
+})();
+</script>
+</body>
+</html>
