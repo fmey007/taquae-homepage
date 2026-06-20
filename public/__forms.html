@@ -1,0 +1,16 @@
+<!--
+  Ce fichier permet à Netlify de détecter le formulaire au moment du build.
+  Il n'est pas servi aux visiteurs — c'est juste un hint pour le détecteur Netlify Forms.
+-->
+<!DOCTYPE html>
+<html>
+<body>
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="nom" />
+  <input type="email" name="email" />
+  <input type="text" name="societe" />
+  <textarea name="message"></textarea>
+  <input type="text" name="bot-field" />
+</form>
+</body>
+</html>
