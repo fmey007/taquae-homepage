@@ -161,6 +161,77 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section
+        id="about"
+        style={{
+          background: colors.dark,
+          color: colors.light,
+          padding: 'clamp(80px, 10vw, 140px) 0',
+          borderTop: `1px solid ${colors.ruleDark}`,
+        }}
+      >
+        <div style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 56px)' }}>
+          <div style={{ marginBottom: 'clamp(40px, 6vw, 88px)' }}>
+            <span
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                fontFamily: fonts.mono,
+                fontSize: '12px',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: colors.mutedDark,
+              }}
+            >
+              <span style={{ width: '28px', height: '1px', background: colors.mutedDark, display: 'block' }} />
+              — 02 / À propos
+            </span>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '64px', alignItems: 'start' }}>
+            <div>
+              <h2
+                style={{
+                  fontFamily: fonts.display,
+                  fontSize: 'clamp(36px, 5.2vw, 76px)',
+                  lineHeight: 1,
+                  letterSpacing: '-0.025em',
+                  marginBottom: '32px',
+                  maxWidth: '18ch',
+                }}
+              >
+                Vingt-cinq ans de <em style={{ fontStyle: 'italic', fontWeight: 300 }}>terrain</em> avant la stratégie IA.
+              </h2>
+
+              <div style={{ fontFamily: fonts.mono, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark, marginBottom: '12px' }}>
+                François Meysembourg, fondateur
+              </div>
+              <div style={{ fontSize: '15px', color: colors.mutedDark, lineHeight: 1.6 }}>
+                Ingénieur binational France · Allemagne (Isfates)<br />
+                Basé à Sarreguemines · Présence Afrique de l&apos;Ouest
+              </div>
+            </div>
+
+            <div style={{ fontSize: '17px', lineHeight: 1.7, color: colors.light, maxWidth: '60ch' }}>
+              <p style={{ marginBottom: '24px' }}>
+                J&apos;ai passé l&apos;essentiel de ma carrière dans des PME et ETI industrielles — automotive, bois, biens de grande distribution — en Allemagne, aux États-Unis et en Belgique. Des entreprises qui produisent, qui exportent, qui se battent avec leurs marges et leurs process.
+              </p>
+              <p style={{ marginBottom: '24px' }}>
+                Puis six ans en Afrique de l&apos;Ouest, à la GIZ au Ghana, détaché au Ghana Investment Promotion Centre. Mon métier : aider des projets d&apos;investissement à boucler leur financement en combinant subventions bilatérales, prêts commerciaux et fonds propres. J&apos;y ai appris une chose : ce qui décide d&apos;un projet n&apos;est jamais la technologie. C&apos;est la stratégie, la rigueur de l&apos;exécution, et la capacité à mesurer ce qui change vraiment.
+              </p>
+              <p style={{ marginBottom: '24px' }}>
+                Taquae est né de ce constat : l&apos;IA va bouleverser les PME comme l&apos;informatique l&apos;a fait il y a quarante ans. Mais sans stratégie, sans cadrage, sans mesure d&apos;impact, c&apos;est de l&apos;argent qui part en fumée. Mon ambition est d&apos;apporter cette discipline-là à des dirigeants qui sentent que l&apos;IA peut transformer leur entreprise mais ne savent pas par où commencer.
+              </p>
+              <p style={{ color: colors.mutedDark, fontSize: '15px', fontStyle: 'italic' }}>
+                Actuellement en formation IA intensive chez Allegria (12 mois d&apos;incubateur), lancement opérationnel de Taquae prévu début 2027.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section
         id="contact"
@@ -185,7 +256,7 @@ export default function Home() {
               }}
             >
               <span style={{ width: '28px', height: '1px', background: colors.mutedDark, display: 'block' }} />
-              — 02 / Contact
+              — 03 / Contact
             </span>
           </div>
 
