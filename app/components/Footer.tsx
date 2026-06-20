@@ -59,8 +59,8 @@ export const Footer = () => {
               </span>
             </div>
             <p style={{ fontSize: '14px', color: colors.mutedDark, lineHeight: 1.6 }}>
-              Conseil en stratégie IA pour PME et organisations du développement. Paris &
-              Frankfurt.
+              Conseil en stratégie IA pour PME et organisations du développement. Paris ·
+              Accra · Lagos.
             </p>
           </div>
           <div>
@@ -108,11 +108,11 @@ export const Footer = () => {
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '14px' }}>
               <li>
-                <a href="mailto:francois@taquae.com" style={{ color: colors.light, textDecoration: 'none' }}>
-                  francois@taquae.com
+                <a href="mailto:f.mey@taquae.eu" style={{ color: colors.light, textDecoration: 'none' }}>
+                  f.mey@taquae.eu
                 </a>
               </li>
-              <li>Paris · Frankfurt</li>
+              <li>Paris · Accra · Lagos</li>
             </ul>
           </div>
         </div>

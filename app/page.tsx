@@ -58,7 +58,7 @@ export default function Home() {
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
             <a
-              href="mailto:francois@taquae.com?subject=Demande%20de%20diagnostic%20IA%20gratuit&body=Bonjour%20Fran%C3%A7ois%2C%0A%0AJe%20souhaite%20demander%20un%20diagnostic%20IA%20gratuit%20pour%20mon%20organisation.%0A%0AContexte%20%3A%0A%0A"
+              href="mailto:f.mey@taquae.eu?subject=Demande%20de%20diagnostic%20IA%20gratuit&body=Bonjour%20Fran%C3%A7ois%2C%0A%0AJe%20souhaite%20demander%20un%20diagnostic%20IA%20gratuit%20pour%20mon%20organisation.%0A%0AContexte%20%3A%0A%0A"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -333,8 +333,8 @@ export default function Home() {
                 <div style={{ fontFamily: fonts.mono, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark, marginBottom: '8px' }}>
                   Email
                 </div>
-                <a href="mailto:francois@taquae.com" style={{ color: colors.light, fontSize: '18px', textDecoration: 'none', borderBottom: `1px solid ${colors.accent}`, paddingBottom: '2px' }}>
-                  francois@taquae.com
+                <a href="mailto:f.mey@taquae.eu" style={{ color: colors.light, fontSize: '18px', textDecoration: 'none', borderBottom: `1px solid ${colors.accent}`, paddingBottom: '2px' }}>
+                  f.mey@taquae.eu
                 </a>
               </div>
 
@@ -343,10 +343,10 @@ export default function Home() {
                   Présence
                 </div>
                 <div style={{ fontSize: '18px', lineHeight: 1.6 }}>
-                  Paris · Frankfurt · Accra
+                  Paris · Accra · Lagos
                 </div>
                 <div style={{ fontSize: '14px', color: colors.mutedDark, marginTop: '4px' }}>
-                  Présence Ghana via partenariat Africon
+                  Présence Afrique de l&apos;Ouest via partenariat Africon
                 </div>
               </div>
 
