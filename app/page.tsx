@@ -57,7 +57,8 @@ export default function Home() {
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-            <button
+            <a
+              href="mailto:francois@taquae.com?subject=Demande%20de%20diagnostic%20IA%20gratuit&body=Bonjour%20Fran%C3%A7ois%2C%0A%0AJe%20souhaite%20demander%20un%20diagnostic%20IA%20gratuit%20pour%20mon%20organisation.%0A%0AContexte%20%3A%0A%0A"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -70,13 +71,15 @@ export default function Home() {
                 color: colors.dark,
                 border: `1px solid ${colors.accent}`,
                 borderRadius: '999px',
+                textDecoration: 'none',
                 cursor: 'pointer',
               }}
             >
               Demander un diagnostic gratuit
               <span>→</span>
-            </button>
-            <button
+            </a>
+            <a
+              href="#services"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -89,11 +92,12 @@ export default function Home() {
                 color: colors.light,
                 border: `1px solid ${colors.ruleLight}`,
                 borderRadius: '999px',
+                textDecoration: 'none',
                 cursor: 'pointer',
               }}
             >
               Notre approche
-            </button>
+            </a>
           </div>
         </div>
       </Hero>

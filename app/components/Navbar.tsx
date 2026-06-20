@@ -8,7 +8,7 @@ export const Navbar = () => {
         inset: 0,
         top: 0,
         zIndex: 60,
-        padding: '18px 0',
+        padding: '14px 0',
         background: 'rgba(14, 15, 12, 0.78)',
         backdropFilter: 'blur(14px) saturate(1.1)',
         color: colors.light,
@@ -24,9 +24,62 @@ export const Navbar = () => {
           alignItems: 'center',
         }}
       >
-        <div style={{ fontSize: '24px', fontWeight: 'bold', fontFamily: fonts.display }}>
-          Taquae
-        </div>
+        <a
+          href="/"
+          aria-label="Taquae Consulting — Accueil"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'flex-start',
+            gap: '6px',
+            textDecoration: 'none',
+            color: colors.light,
+          }}
+        >
+          <span
+            style={{
+              display: 'inline-flex',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+              lineHeight: 1,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: fonts.logo,
+                fontSize: '46px',
+                fontWeight: 400,
+                letterSpacing: '0',
+                lineHeight: 1,
+                alignSelf: 'stretch',
+              }}
+            >
+              Taquae
+            </span>
+            <span
+              style={{
+                fontFamily: fonts.logo,
+                fontSize: '15px',
+                fontWeight: 400,
+                color: colors.accent,
+                marginTop: '4px',
+                lineHeight: 1,
+              }}
+            >
+              Consulting
+            </span>
+          </span>
+          <span
+            aria-hidden="true"
+            style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: colors.accent,
+              display: 'inline-block',
+              marginTop: '8px',
+            }}
+          />
+        </a>
         <ul style={{ display: 'flex', gap: '40px', listStyle: 'none', margin: 0, padding: 0 }}>
           <li>
             <a href="#services" style={{ color: colors.light, textDecoration: 'none' }}>

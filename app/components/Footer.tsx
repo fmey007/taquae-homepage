@@ -21,9 +21,43 @@ export const Footer = () => {
           }}
         >
           <div>
-            <h3 style={{ fontFamily: fonts.display, fontSize: '18px', marginBottom: '16px' }}>
-              Taquae
-            </h3>
+            <div
+              style={{
+                display: 'inline-flex',
+                flexDirection: 'column',
+                alignItems: 'flex-end',
+                lineHeight: 1,
+                marginBottom: '20px',
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale',
+                textRendering: 'optimizeLegibility',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: fonts.logo,
+                  fontSize: '40px',
+                  fontWeight: 400,
+                  lineHeight: 1,
+                  alignSelf: 'stretch',
+                  color: colors.light,
+                }}
+              >
+                Taquae
+              </span>
+              <span
+                style={{
+                  fontFamily: fonts.logo,
+                  fontSize: '14px',
+                  fontWeight: 400,
+                  color: colors.accent,
+                  marginTop: '4px',
+                  lineHeight: 1,
+                }}
+              >
+                Consulting
+              </span>
+            </div>
             <p style={{ fontSize: '14px', color: colors.mutedDark, lineHeight: 1.6 }}>
               Conseil en stratégie IA pour PME et organisations du développement. Paris &
               Frankfurt.

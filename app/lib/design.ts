@@ -18,6 +18,7 @@ export const fonts = {
   display: '"Spectral", "Times New Roman", serif',
   sans: '"Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
   mono: '"Geist Mono", ui-monospace, monospace',
+  logo: 'var(--font-logo), "Permanent Marker", "Marker Felt", cursive',
 };
 
 export const spacing = {
