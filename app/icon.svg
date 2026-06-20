@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0E0F0C"/>
+  <text x="32" y="48" font-family="'Permanent Marker', 'Marker Felt', cursive" font-size="42" fill="#C8FF3E" text-anchor="middle" font-weight="400">T</text>
+  <circle cx="50" cy="20" r="3" fill="#C8FF3E"/>
+</svg>
