@@ -209,7 +209,7 @@ export default function Home() {
                 François Meysembourg, fondateur
               </div>
               <div style={{ fontSize: '15px', color: colors.mutedDark, lineHeight: 1.6 }}>
-                Ingénieur binational France · Allemagne (Isfates)<br />
+                Ingénieur binational France · Allemagne (ISFATES - DFHI)<br />
                 Basé à Sarreguemines · Présence Afrique de l&apos;Ouest
               </div>
             </div>
@@ -225,7 +225,7 @@ export default function Home() {
                 Taquae est né de ce constat : l&apos;IA va bouleverser les PME comme l&apos;informatique l&apos;a fait il y a quarante ans. Mais sans stratégie, sans cadrage, sans mesure d&apos;impact, c&apos;est de l&apos;argent qui part en fumée. Mon ambition est d&apos;apporter cette discipline-là à des dirigeants qui sentent que l&apos;IA peut transformer leur entreprise mais ne savent pas par où commencer.
               </p>
               <p style={{ color: colors.mutedDark, fontSize: '15px', fontStyle: 'italic' }}>
-                Actuellement en formation IA intensive chez Allegria (12 mois d&apos;incubateur), lancement opérationnel de Taquae prévu début 2027.
+                Lancement opérationnel de Taquae prévu début 2027.
               </p>
             </div>
           </div>
