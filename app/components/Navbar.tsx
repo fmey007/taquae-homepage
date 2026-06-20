@@ -5,8 +5,9 @@ export const Navbar = () => {
     <nav
       style={{
         position: 'fixed',
-        inset: 0,
         top: 0,
+        left: 0,
+        right: 0,
         zIndex: 60,
         padding: '14px 0',
         background: 'rgba(14, 15, 12, 0.78)',
