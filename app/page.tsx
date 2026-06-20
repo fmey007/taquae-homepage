@@ -216,10 +216,10 @@ export default function Home() {
 
             <div style={{ fontSize: '17px', lineHeight: 1.7, color: colors.light, maxWidth: '60ch' }}>
               <p style={{ marginBottom: '24px' }}>
-                J&apos;ai passé l&apos;essentiel de ma carrière dans des PME et ETI industrielles — automotive, bois, biens de grande distribution — en Allemagne, aux États-Unis et en Belgique. Des entreprises qui produisent, qui exportent, qui se battent avec leurs marges et leurs process.
+                J&apos;ai passé l&apos;essentiel de ma carrière dans des PME et ETI industrielles — automotive, bois, biens de grande distribution — en Europe de l&apos;Ouest, aux États-Unis et en Afrique du Nord. Des entreprises qui produisent, qui exportent, qui se battent avec leurs marges et leurs process.
               </p>
               <p style={{ marginBottom: '24px' }}>
-                Puis six ans en Afrique de l&apos;Ouest, à la GIZ au Ghana, détaché au Ghana Investment Promotion Centre. Mon métier : aider des projets d&apos;investissement à boucler leur financement en combinant subventions bilatérales, prêts commerciaux et fonds propres. J&apos;y ai appris une chose : ce qui décide d&apos;un projet n&apos;est jamais la technologie. C&apos;est la stratégie, la rigueur de l&apos;exécution, et la capacité à mesurer ce qui change vraiment.
+                Puis six ans en Afrique de l&apos;Ouest, à la GIZ au Ghana, détaché au Ghana Investment Promotion Centre. Mon métier : restructurer des équipes et aider des projets d&apos;investissement à boucler leur financement en combinant subventions bilatérales, prêts commerciaux et fonds propres. J&apos;y ai appris une chose : ce qui décide d&apos;un projet n&apos;est jamais la technologie. C&apos;est la stratégie, la rigueur de l&apos;exécution, et la capacité à mesurer ce qui change vraiment.
               </p>
               <p style={{ marginBottom: '24px' }}>
                 Taquae est né de ce constat : l&apos;IA va bouleverser les PME comme l&apos;informatique l&apos;a fait il y a quarante ans. Mais sans stratégie, sans cadrage, sans mesure d&apos;impact, c&apos;est de l&apos;argent qui part en fumée. Mon ambition est d&apos;apporter cette discipline-là à des dirigeants qui sentent que l&apos;IA peut transformer leur entreprise mais ne savent pas par où commencer.
