@@ -217,7 +217,7 @@ export default function Home() {
                   />
                 </div>
                 <figcaption style={{ marginTop: '12px', fontSize: '13px', color: colors.mutedDark, lineHeight: 1.5, maxWidth: '460px', fontStyle: 'italic' }}>
-                  Ghana, 2023. Système d&apos;irrigation solaire pour une plantation de cacao, après accompagnement au montage financier mixte (subvention bilatérale, prêt commercial, fonds propres).
+                  Ghana, 2023. Système d&apos;irrigation solaire pilote pour une plantation de cacao, accompagnement au montage financier pour reproduire le modèle sur 200 ha.
                 </figcaption>
               </figure>
 
