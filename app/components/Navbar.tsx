@@ -83,22 +83,17 @@ export const Navbar = () => {
         </a>
         <ul style={{ display: 'flex', gap: '40px', listStyle: 'none', margin: 0, padding: 0 }}>
           <li>
-            <a href="#services" style={{ color: colors.light, textDecoration: 'none' }}>
+            <a href="/#services" style={{ color: colors.light, textDecoration: 'none' }}>
               Services
             </a>
           </li>
           <li>
-            <a href="#case" style={{ color: colors.light, textDecoration: 'none' }}>
-              Cas
-            </a>
-          </li>
-          <li>
-            <a href="#about" style={{ color: colors.light, textDecoration: 'none' }}>
+            <a href="/#about" style={{ color: colors.light, textDecoration: 'none' }}>
               À propos
             </a>
           </li>
           <li>
-            <a href="#contact" style={{ color: colors.light, textDecoration: 'none' }}>
+            <a href="/#contact" style={{ color: colors.light, textDecoration: 'none' }}>
               Contact
             </a>
           </li>

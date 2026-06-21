@@ -53,7 +53,7 @@ export default function Home() {
               marginBottom: '48px',
             }}
           >
-            Conseil de fond pour PME industrielles et organisations du développement qui veulent intégrer l&apos;IA — vite, juste, et sans dépendance technologique.
+            Conseil de fond pour PME industrielles et organismes de développement qui veulent intégrer l&apos;IA — vite, juste, et sans dépendance technologique.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
@@ -210,16 +210,16 @@ export default function Home() {
               </div>
               <div style={{ fontSize: '15px', color: colors.mutedDark, lineHeight: 1.6 }}>
                 Ingénieur binational France · Allemagne (ISFATES - DFHI)<br />
-                Basé à Sarreguemines · Présence Afrique de l&apos;Ouest
+                Basé dans le Grand Est · Présence en Afrique de l&apos;Ouest
               </div>
             </div>
 
             <div style={{ fontSize: '17px', lineHeight: 1.7, color: colors.light, maxWidth: '60ch' }}>
               <p style={{ marginBottom: '24px' }}>
-                J&apos;ai passé l&apos;essentiel de ma carrière dans des PME et ETI industrielles — automotive, bois, biens de grande distribution — en Europe de l&apos;Ouest, aux États-Unis et en Afrique du Nord. Des entreprises qui produisent, qui exportent, qui se battent avec leurs marges et leurs process.
+                J&apos;ai passé l&apos;essentiel de ma carrière dans des PME et ETI industrielles — automotive, bois, biens de grande distribution — en Europe de l&apos;Ouest et aux États-Unis. Des entreprises qui produisent, qui exportent, qui se battent avec leurs marges et leurs process.
               </p>
               <p style={{ marginBottom: '24px' }}>
-                Puis six ans en Afrique de l&apos;Ouest, à la GIZ au Ghana, détaché au Ghana Investment Promotion Centre. Mon métier : restructurer des équipes et aider des projets d&apos;investissement à boucler leur financement en combinant subventions bilatérales, prêts commerciaux et fonds propres. J&apos;y ai appris une chose : ce qui décide d&apos;un projet n&apos;est jamais la technologie. C&apos;est la stratégie, la rigueur de l&apos;exécution, et la capacité à mesurer ce qui change vraiment.
+                J&apos;ai dirigé une équipe spécialisée en localisation d&apos;entreprise dans le développement de projets internationaux au sein d&apos;EY, puis passé six ans en Afrique de l&apos;Ouest, à la GIZ au Ghana, détaché au Ghana Investment Promotion Centre. Mon métier : restructurer des équipes et aider des projets d&apos;investissement à boucler leur financement en combinant subventions bilatérales, prêts commerciaux et fonds propres. J&apos;y ai appris une chose : ce qui décide d&apos;un projet n&apos;est jamais la technologie. C&apos;est la stratégie, la rigueur de l&apos;exécution, et la capacité à mesurer ce qui change vraiment.
               </p>
               <p style={{ marginBottom: '24px' }}>
                 Taquae est né de ce constat : l&apos;IA va bouleverser les PME comme l&apos;informatique l&apos;a fait il y a quarante ans. Mais sans stratégie, sans cadrage, sans mesure d&apos;impact, c&apos;est de l&apos;argent qui part en fumée. Mon ambition est d&apos;apporter cette discipline-là à des dirigeants qui sentent que l&apos;IA peut transformer leur entreprise mais ne savent pas par où commencer.
@@ -284,7 +284,7 @@ export default function Home() {
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              action="/?contact=ok#contact"
+              action="/thanks"
               style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
             >
               <input type="hidden" name="form-name" value="contact" />

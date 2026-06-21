@@ -21,11 +21,11 @@ const permanentMarker = Permanent_Marker({
 export const metadata: Metadata = {
   metadataBase: new URL("https://taquae.fr"),
   title: {
-    default: "Taquae Consulting · Stratégie IA pour PME et organisations du développement",
+    default: "Taquae Consulting · Stratégie IA pour PME et organismes de développement",
     template: "%s · Taquae Consulting",
   },
   description:
-    "Conseil de fond pour PME industrielles et organisations du développement qui veulent intégrer l'IA — vite, juste, et sans dépendance technologique. Audit, accompagnement stratégique, mise en œuvre technique.",
+    "Conseil de fond pour PME industrielles et organismes de développement qui veulent intégrer l'IA — vite, juste, et sans dépendance technologique. Audit, accompagnement stratégique, mise en œuvre technique.",
   keywords: [
     "conseil IA",
     "stratégie IA",
@@ -42,15 +42,15 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://taquae.fr",
     siteName: "Taquae Consulting",
-    title: "Taquae Consulting · Stratégie IA pour PME et organisations du développement",
+    title: "Taquae Consulting · Stratégie IA pour PME et organismes de développement",
     description:
-      "Conseil de fond pour PME industrielles et organisations du développement qui veulent intégrer l'IA — vite, juste, et sans dépendance technologique.",
+      "Conseil de fond pour PME industrielles et organismes de développement qui veulent intégrer l'IA — vite, juste, et sans dépendance technologique.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Taquae Consulting · Stratégie IA pour PME et organisations du développement",
+    title: "Taquae Consulting · Stratégie IA pour PME et organismes de développement",
     description:
-      "Conseil de fond pour PME industrielles et organisations du développement qui veulent intégrer l'IA.",
+      "Conseil de fond pour PME industrielles et organismes de développement qui veulent intégrer l'IA.",
   },
   robots: {
     index: true,

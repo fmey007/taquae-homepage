@@ -59,7 +59,7 @@ export const Footer = () => {
               </span>
             </div>
             <p style={{ fontSize: '14px', color: colors.mutedDark, lineHeight: 1.6 }}>
-              Conseil en stratégie IA pour PME et organisations du développement. Paris ·
+              Conseil en stratégie IA pour PME et organismes de développement. Paris ·
               Accra · Lagos.
             </p>
           </div>
@@ -67,19 +67,19 @@ export const Footer = () => {
             <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '12px', textTransform: 'uppercase' }}>
               Services
             </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '14px' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '14px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <li>
-                <a href="#audit" style={{ color: colors.light, textDecoration: 'none' }}>
+                <a href="/#services" style={{ color: colors.light, textDecoration: 'none' }}>
                   Audit IA
                 </a>
               </li>
               <li>
-                <a href="#advisory" style={{ color: colors.light, textDecoration: 'none' }}>
+                <a href="/#services" style={{ color: colors.light, textDecoration: 'none' }}>
                   Accompagnement
                 </a>
               </li>
               <li>
-                <a href="#delivery" style={{ color: colors.light, textDecoration: 'none' }}>
+                <a href="/#services" style={{ color: colors.light, textDecoration: 'none' }}>
                   Mise en œuvre
                 </a>
               </li>
@@ -87,17 +87,27 @@ export const Footer = () => {
           </div>
           <div>
             <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '12px', textTransform: 'uppercase' }}>
-              About
+              Cabinet
             </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '14px' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '14px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <li>
-                <a href="#about" style={{ color: colors.light, textDecoration: 'none' }}>
+                <a href="/#about" style={{ color: colors.light, textDecoration: 'none' }}>
                   À propos
                 </a>
               </li>
               <li>
-                <a href="#method" style={{ color: colors.light, textDecoration: 'none' }}>
-                  Méthode
+                <a href="/#contact" style={{ color: colors.light, textDecoration: 'none' }}>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="/mentions-legales" style={{ color: colors.light, textDecoration: 'none' }}>
+                  Mentions légales
+                </a>
+              </li>
+              <li>
+                <a href="/politique-confidentialite" style={{ color: colors.light, textDecoration: 'none' }}>
+                  Confidentialité
                 </a>
               </li>
             </ul>
@@ -106,7 +116,7 @@ export const Footer = () => {
             <h4 style={{ fontSize: '12px', fontWeight: 600, marginBottom: '12px', textTransform: 'uppercase' }}>
               Contact
             </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '14px' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '14px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <li>
                 <a href="mailto:f.mey@taquae.eu" style={{ color: colors.light, textDecoration: 'none' }}>
                   f.mey@taquae.eu
@@ -116,8 +126,8 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        <div style={{ fontSize: '12px', color: colors.mutedDark, display: 'flex', justifyContent: 'space-between' }}>
-          <span>© 2026 Taquae SASU · RCS Paris</span>
+        <div style={{ fontSize: '12px', color: colors.mutedDark, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+          <span>© 2026 Taquae SAS · RCS Paris 921 421 509 · Capital 1 000 €</span>
           <span>v1.0 · Lancement officiel 2027-01</span>
         </div>
       </div>
