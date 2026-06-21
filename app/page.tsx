@@ -205,6 +205,22 @@ export default function Home() {
                 Vingt-cinq ans de <em style={{ fontStyle: 'italic', fontWeight: 300 }}>terrain</em> avant la stratégie IA.
               </h2>
 
+              <figure style={{ margin: '0 0 32px 0' }}>
+                <div style={{ position: 'relative', aspectRatio: '3 / 4', width: '100%', maxWidth: '460px', overflow: 'hidden', borderRadius: '2px' }}>
+                  <Image
+                    src="/images/ghana-cacao-solaire.jpg"
+                    alt="François Meysembourg sur le terrain au Ghana, devant un système d'irrigation solaire installé pour une plantation de cacao"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 460px"
+                    style={{ objectFit: 'cover' }}
+                    loading="eager"
+                  />
+                </div>
+                <figcaption style={{ marginTop: '12px', fontSize: '13px', color: colors.mutedDark, lineHeight: 1.5, maxWidth: '460px', fontStyle: 'italic' }}>
+                  Ghana, 2023. Système d&apos;irrigation solaire pour une plantation de cacao, après accompagnement au montage financier mixte (subvention bilatérale, prêt commercial, fonds propres).
+                </figcaption>
+              </figure>
+
               <div style={{ fontFamily: fonts.mono, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark, marginBottom: '12px' }}>
                 François Meysembourg, fondateur
               </div>
