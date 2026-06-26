@@ -319,8 +319,8 @@ export default function Home() {
               action="https://formspree.io/f/mdargejb"
               style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
             >
-              <input type="hidden" name="_next" value="https://taquae.fr/thanks" />
-              <input type="hidden" name="_subject" value="Nouveau message — taquae.fr" />
+              <input type="hidden" name="_next" value="https://taquae.eu/thanks" />
+              <input type="hidden" name="_subject" value="Nouveau message — taquae.eu" />
               <p hidden>
                 <label>
                   Ne pas remplir : <input name="_gotcha" />

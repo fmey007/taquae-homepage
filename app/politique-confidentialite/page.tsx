@@ -5,7 +5,7 @@ import { colors, fonts } from '@/app/lib/design';
 export const metadata: Metadata = {
   title: 'Politique de confidentialité',
   description:
-    'Politique de confidentialité du site taquae.fr — traitement des données personnelles et conformité RGPD.',
+    'Politique de confidentialité du site taquae.eu — traitement des données personnelles et conformité RGPD.',
   robots: { index: true, follow: true },
 };
 
@@ -49,7 +49,7 @@ export default function Confidentialite() {
             <p style={{ marginBottom: '40px', color: colors.mutedLight, fontStyle: 'italic' }}>
               Taquae SAS attache une importance particulière au respect de votre vie privée et de vos données
               personnelles. Cette politique décrit, en toute transparence, comment vos données sont collectées
-              et utilisées sur le site taquae.fr.
+              et utilisées sur le site taquae.eu.
             </p>
 
             <Section title="1. Responsable du traitement">
@@ -66,7 +66,7 @@ export default function Confidentialite() {
 
             <Section title="2. Données collectées">
               <p>
-                Le site taquae.fr ne collecte aucune donnée à l&apos;insu de ses visiteurs. Les seules données
+                Le site taquae.eu ne collecte aucune donnée à l&apos;insu de ses visiteurs. Les seules données
                 collectées le sont via le <strong>formulaire de contact</strong>, exclusivement à votre
                 initiative :
               </p>
@@ -159,7 +159,7 @@ export default function Confidentialite() {
 
             <Section title="9. Cookies">
               <p>
-                Le site taquae.fr ne dépose ni cookies de mesure d&apos;audience, ni cookies publicitaires, ni
+                Le site taquae.eu ne dépose ni cookies de mesure d&apos;audience, ni cookies publicitaires, ni
                 traceurs de réseaux sociaux. Seuls les cookies strictement nécessaires au fonctionnement
                 technique du site et à la protection anti-spam du formulaire (Netlify Forms) sont susceptibles
                 d&apos;être déposés.
@@ -168,7 +168,7 @@ export default function Confidentialite() {
 
             <Section title="10. Sécurité">
               <p>
-                Toutes les communications avec le site taquae.fr sont chiffrées via le protocole HTTPS
+                Toutes les communications avec le site taquae.eu sont chiffrées via le protocole HTTPS
                 (certificat SSL). Taquae SAS met en œuvre les mesures techniques et organisationnelles
                 appropriées pour protéger vos données contre tout accès non autorisé, altération, divulgation
                 ou destruction.

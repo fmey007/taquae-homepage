@@ -5,7 +5,7 @@ import { colors, fonts } from '@/app/lib/design';
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description:
-    'Mentions légales du site taquae.fr — éditeur, hébergeur, propriété intellectuelle et conditions d\'utilisation.',
+    'Mentions légales du site taquae.eu — éditeur, hébergeur, propriété intellectuelle et conditions d\'utilisation.',
   robots: { index: true, follow: true },
 };
 
@@ -48,7 +48,7 @@ export default function MentionsLegales() {
           <div style={{ fontSize: '17px', lineHeight: 1.7, color: colors.ink }}>
             <Section title="Éditeur du site">
               <p>
-                Le site <strong>taquae.fr</strong> est édité par la société <strong>Taquae</strong>, société par
+                Le site <strong>taquae.eu</strong> est édité par la société <strong>Taquae</strong>, société par
                 actions simplifiée (SAS) au capital de 1 000 €.
               </p>
               <ul>
@@ -85,7 +85,7 @@ export default function MentionsLegales() {
 
             <Section title="Propriété intellectuelle">
               <p>
-                L&apos;ensemble des contenus présents sur le site taquae.fr (textes, images, logos, identité
+                L&apos;ensemble des contenus présents sur le site taquae.eu (textes, images, logos, identité
                 visuelle, structure éditoriale) est la propriété exclusive de Taquae SAS, sauf mention contraire.
                 Toute reproduction, représentation, diffusion ou exploitation, totale ou partielle, sans
                 autorisation écrite préalable est interdite et constitue une contrefaçon sanctionnée par les
@@ -109,7 +109,7 @@ export default function MentionsLegales() {
 
             <Section title="Cookies">
               <p>
-                Le site taquae.fr ne dépose aucun cookie de mesure d&apos;audience ni de traçage publicitaire.
+                Le site taquae.eu ne dépose aucun cookie de mesure d&apos;audience ni de traçage publicitaire.
                 Seuls les cookies strictement nécessaires au fonctionnement du site et à la sécurité (anti-spam
                 Netlify Forms) sont susceptibles d&apos;être déposés. Aucun consentement préalable n&apos;est
                 donc requis.
@@ -127,7 +127,7 @@ export default function MentionsLegales() {
             <Section title="Droit applicable et juridiction compétente">
               <p>
                 Les présentes mentions légales sont régies par le droit français. Tout litige relatif au site
-                taquae.fr relève de la compétence exclusive des tribunaux du ressort de Paris.
+                taquae.eu relève de la compétence exclusive des tribunaux du ressort de Paris.
               </p>
             </Section>
 

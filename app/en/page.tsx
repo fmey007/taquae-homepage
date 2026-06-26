@@ -328,8 +328,8 @@ export default function HomeEN() {
               action="https://formspree.io/f/mdargejb"
               style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
             >
-              <input type="hidden" name="_next" value="https://taquae.fr/en/thanks" />
-              <input type="hidden" name="_subject" value="New message — taquae.fr" />
+              <input type="hidden" name="_next" value="https://taquae.eu/en/thanks" />
+              <input type="hidden" name="_subject" value="New message — taquae.eu" />
               <p hidden>
                 <label>
                   Don&apos;t fill this out: <input name="_gotcha" />
