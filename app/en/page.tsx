@@ -321,19 +321,18 @@ export default function HomeEN() {
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '56px' }}>
-            {/* Netlify form */}
+            {/* Formspree form */}
             <form
               name="contact"
               method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              action="/en/thanks"
+              action="https://formspree.io/f/mdargejb"
               style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
             >
-              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="_next" value="https://taquae.fr/en/thanks" />
+              <input type="hidden" name="_subject" value="New message — taquae.fr" />
               <p hidden>
                 <label>
-                  Don&apos;t fill this out: <input name="bot-field" />
+                  Don&apos;t fill this out: <input name="_gotcha" />
                 </label>
               </p>
 
