@@ -1,11 +1,19 @@
+import type { Metadata } from 'next';
 import { Navbar, Hero, Footer } from '@/app/components';
 import { colors, fonts } from '@/app/lib/design';
 import Image from 'next/image';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'Taquae Consulting — AI strategy for SMEs',
+  description:
+    'AI strategy consulting for industrial SMEs and development organisations: audit, strategic advisory, hands-on implementation.',
+  robots: { index: true, follow: true },
+};
+
+export default function HomeEN() {
   return (
     <div style={{ fontFamily: fonts.sans, background: colors.paper, color: colors.ink }}>
-      <Navbar />
+      <Navbar locale="en" />
 
       {/* Hero */}
       <Hero>
@@ -24,7 +32,7 @@ export default function Home() {
               }}
             >
               <span style={{ width: '28px', height: '1px', background: colors.mutedDark, display: 'block' }} />
-              Lancement officiel · janv. 2027
+              Official launch · Jan. 2027
             </span>
           </div>
 
@@ -39,9 +47,9 @@ export default function Home() {
               maxWidth: '14ch',
             }}
           >
-            Exploiter <em style={{ fontStyle: 'italic', fontWeight: 300 }}>l&apos;IA</em>
+            Use <em style={{ fontStyle: 'italic', fontWeight: 300 }}>AI</em>
             <br />
-            sans risque : <span style={{ color: colors.accent }}>stratégie</span> avant technologie.
+            without the risk: <span style={{ color: colors.accent }}>strategy</span> before technology.
           </h1>
 
           <p
@@ -53,12 +61,12 @@ export default function Home() {
               marginBottom: '48px',
             }}
           >
-            Conseil de fond pour PME industrielles et organismes de développement qui veulent intégrer l&apos;IA — vite, juste, et sans dépendance technologique.
+            Substantive consulting for industrial SMEs and development organisations who want to adopt AI — fast, right, and without technology lock-in.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
             <a
-              href="mailto:f.mey@taquae.eu?subject=Demande%20de%20diagnostic%20IA%20gratuit&body=Bonjour%20Fran%C3%A7ois%2C%0A%0AJe%20souhaite%20demander%20un%20diagnostic%20IA%20gratuit%20pour%20mon%20organisation.%0A%0AContexte%20%3A%0A%0A"
+              href="mailto:f.mey@taquae.eu?subject=Free%20AI%20diagnostic%20request&body=Hi%20Fran%C3%A7ois%2C%0A%0AI%27d%20like%20to%20request%20a%20free%20AI%20diagnostic%20for%20my%20organisation.%0A%0AContext%3A%0A%0A"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -75,7 +83,7 @@ export default function Home() {
                 cursor: 'pointer',
               }}
             >
-              Demander un diagnostic gratuit
+              Request a free diagnostic
               <span>→</span>
             </a>
             <a
@@ -96,7 +104,7 @@ export default function Home() {
                 cursor: 'pointer',
               }}
             >
-              Notre approche
+              Our approach
             </a>
           </div>
         </div>
@@ -104,6 +112,7 @@ export default function Home() {
 
       {/* Services Section */}
       <section
+        id="services"
         style={{
           background: colors.paper,
           color: colors.ink,
@@ -139,18 +148,18 @@ export default function Home() {
               maxWidth: '20ch',
             }}
           >
-            Trois manières d&apos;avancer <em style={{ fontStyle: 'italic', fontWeight: 300 }}>avec méthode</em>.
+            Three ways to move forward <em style={{ fontStyle: 'italic', fontWeight: 300 }}>with method</em>.
           </h2>
 
           <p style={{ fontSize: '18px', color: colors.mutedLight, maxWidth: '56ch', marginBottom: '64px' }}>
-            De l&apos;audit ponctuel à la mise en œuvre opérationnelle : un format adapté à chaque maturité.
+            From a one-off audit to hands-on delivery: a format suited to wherever you stand today.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
             {[
-              { title: 'Audit IA', desc: 'Pour les PME qui veulent identifier précisément où l&apos;IA crée de la valeur — et où elle introduit du risque.' },
-              { title: 'Accompagnement stratégique', desc: 'Intégrer l&apos;IA dans la stratégie long terme : vision, budget, gouvernance, montée en compétence.' },
-              { title: 'Mise en œuvre technique', desc: 'Démarrer un projet IA avec un appui expert : delivery, intégration, et transfert de compétences à vos équipes.' },
+              { title: 'AI Audit', desc: 'For SMEs who want to pinpoint exactly where AI creates value — and where it introduces risk.' },
+              { title: 'Strategic advisory', desc: 'Embed AI into long-term strategy: vision, budget, governance, upskilling.' },
+              { title: 'Implementation', desc: 'Kick off an AI project with expert support: delivery, integration, and skills transfer to your team.' },
             ].map((service) => (
               <div key={service.title} style={{ padding: '24px' }}>
                 <h3 style={{ fontFamily: fonts.display, fontSize: '24px', marginBottom: '12px' }}>{service.title}</h3>
@@ -161,7 +170,7 @@ export default function Home() {
 
           <div style={{ marginTop: '48px' }}>
             <a
-              href="/doing-business-ghana"
+              href="/en/doing-business-ghana"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -173,7 +182,7 @@ export default function Home() {
                 textUnderlineOffset: '3px',
               }}
             >
-              Voir un cas d&apos;usage en cours : Doing Business in Ghana →
+              See a live case study: Doing Business in Ghana →
             </a>
           </div>
         </div>
@@ -204,7 +213,7 @@ export default function Home() {
               }}
             >
               <span style={{ width: '28px', height: '1px', background: colors.mutedDark, display: 'block' }} />
-              — 02 / À propos
+              — 02 / About
             </span>
           </div>
 
@@ -220,14 +229,14 @@ export default function Home() {
                   maxWidth: '18ch',
                 }}
               >
-                Vingt-cinq ans de <em style={{ fontStyle: 'italic', fontWeight: 300 }}>terrain</em> avant la stratégie IA.
+                Twenty-five years on the <em style={{ fontStyle: 'italic', fontWeight: 300 }}>ground</em> before AI strategy.
               </h2>
 
               <figure style={{ margin: '0 0 32px 0' }}>
                 <div style={{ position: 'relative', aspectRatio: '3 / 4', width: '100%', maxWidth: '460px', overflow: 'hidden', borderRadius: '2px' }}>
                   <Image
                     src="/images/ghana-cacao-solaire.jpg"
-                    alt="François Meysembourg sur le terrain au Ghana, devant un système d'irrigation solaire installé pour une plantation de cacao"
+                    alt="François Meysembourg in the field in Ghana, in front of a solar irrigation system installed for a cocoa plantation"
                     fill
                     sizes="(max-width: 768px) 100vw, 460px"
                     style={{ objectFit: 'cover' }}
@@ -235,31 +244,31 @@ export default function Home() {
                   />
                 </div>
                 <figcaption style={{ marginTop: '12px', fontSize: '13px', color: colors.mutedDark, lineHeight: 1.5, maxWidth: '460px', fontStyle: 'italic' }}>
-                  Ghana, 2023. Système d&apos;irrigation solaire pilote pour une plantation de cacao, accompagnement au montage financier pour reproduire le modèle sur 200 ha et mutualiser les petits planteurs n&apos;ayant pas la surface financière pour porter seuls l&apos;irrigation de leur plantation.
+                  Ghana, 2023. Pilot solar irrigation system for a cocoa plantation, financial structuring support to replicate the model across 200 ha and pool resources for smallholder farmers who cannot afford irrigation on their own.
                 </figcaption>
               </figure>
 
               <div style={{ fontFamily: fonts.mono, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark, marginBottom: '12px' }}>
-                François Meysembourg, fondateur
+                François Meysembourg, Founder
               </div>
               <div style={{ fontSize: '15px', color: colors.mutedDark, lineHeight: 1.6 }}>
-                Ingénieur binational France · Allemagne (ISFATES - DFHI)<br />
-                Basé dans le Grand Est · Présence en Afrique de l&apos;Ouest
+                Bi-national engineer, France · Germany (ISFATES - DFHI)<br />
+                Based in Eastern France · Active in West Africa
               </div>
             </div>
 
             <div style={{ fontSize: '17px', lineHeight: 1.7, color: colors.light, maxWidth: '60ch' }}>
               <p style={{ marginBottom: '24px' }}>
-                J&apos;ai passé l&apos;essentiel de ma carrière dans des PME et ETI industrielles — automotive, bois, biens de grande distribution — en Europe de l&apos;Ouest et aux États-Unis. Des entreprises qui produisent, qui exportent, qui se battent avec leurs marges et leurs process.
+                I spent most of my career in industrial SMEs and mid-caps — automotive, timber, consumer goods — across Western Europe and the United States. Companies that manufacture, export, and fight for their margins and their processes.
               </p>
               <p style={{ marginBottom: '24px' }}>
-                J&apos;ai dirigé une équipe spécialisée en localisation d&apos;entreprise dans le développement de projets internationaux au sein d&apos;EY, puis passé six ans en Afrique de l&apos;Ouest, à la GIZ au Ghana, détaché au Ghana Investment Promotion Centre. Mon métier : restructurer des équipes et aider des projets d&apos;investissement à boucler leur financement en combinant subventions bilatérales, prêts commerciaux et fonds propres. J&apos;y ai appris une chose : ce qui décide d&apos;un projet n&apos;est jamais la technologie. C&apos;est la stratégie, la rigueur de l&apos;exécution, et la capacité à mesurer ce qui change vraiment.
+                I led a business location team for international project development at EY, then spent six years in West Africa with GIZ in Ghana, seconded to the Ghana Investment Promotion Centre. My work: restructuring teams and helping investment projects close financing by combining bilateral grants, commercial loans, and equity. I learned one thing there: what decides a project is never the technology. It&apos;s the strategy, the rigour of execution, and the ability to measure what actually changes.
               </p>
               <p style={{ marginBottom: '24px' }}>
-                Taquae est né de ce constat : l&apos;IA va bouleverser les PME comme l&apos;informatique l&apos;a fait il y a quarante ans. Mais sans stratégie, sans cadrage, sans mesure d&apos;impact, c&apos;est de l&apos;argent qui part en fumée. Mon ambition est d&apos;apporter cette discipline-là à des dirigeants qui sentent que l&apos;IA peut transformer leur entreprise mais ne savent pas par où commencer.
+                Taquae was born from that observation: AI is going to disrupt SMEs the way computing did forty years ago. But without strategy, without framing, without measuring impact, it&apos;s money going up in smoke. My ambition is to bring that discipline to leaders who sense AI could transform their business but don&apos;t know where to start.
               </p>
               <p style={{ color: colors.mutedDark, fontSize: '15px', fontStyle: 'italic' }}>
-                Lancement opérationnel de Taquae prévu début 2027.
+                Taquae&apos;s official launch is planned for early 2027.
               </p>
             </div>
           </div>
@@ -304,33 +313,33 @@ export default function Home() {
               maxWidth: '20ch',
             }}
           >
-            Premier échange de <em style={{ fontStyle: 'italic', fontWeight: 300 }}>30 minutes</em>, sans engagement.
+            A first <em style={{ fontStyle: 'italic', fontWeight: 300 }}>30-minute</em> conversation, no strings attached.
           </h2>
 
           <p style={{ fontSize: '18px', color: colors.mutedDark, maxWidth: '56ch', marginBottom: '64px' }}>
-            Une conversation directe pour comprendre votre contexte, identifier où l&apos;IA peut créer de la valeur dans votre organisation, et voir si on est faits pour travailler ensemble.
+            A direct conversation to understand your context, identify where AI can create value in your organisation, and see if we&apos;re a fit to work together.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '56px' }}>
-            {/* Formulaire Netlify */}
+            {/* Netlify form */}
             <form
               name="contact"
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              action="/thanks"
+              action="/en/thanks"
               style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
             >
               <input type="hidden" name="form-name" value="contact" />
               <p hidden>
                 <label>
-                  Ne pas remplir : <input name="bot-field" />
+                  Don&apos;t fill this out: <input name="bot-field" />
                 </label>
               </p>
 
               <label style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <span style={{ fontSize: '12px', fontFamily: fonts.mono, textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark }}>
-                  Nom
+                  Name
                 </span>
                 <input
                   type="text"
@@ -370,7 +379,7 @@ export default function Home() {
 
               <label style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <span style={{ fontSize: '12px', fontFamily: fonts.mono, textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark }}>
-                  Société / Organisation
+                  Company / Organisation
                 </span>
                 <input
                   type="text"
@@ -389,7 +398,7 @@ export default function Home() {
 
               <label style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <span style={{ fontSize: '12px', fontFamily: fonts.mono, textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark }}>
-                  Votre contexte / question
+                  Your context / question
                 </span>
                 <textarea
                   name="message"
@@ -428,11 +437,11 @@ export default function Home() {
                   marginTop: '8px',
                 }}
               >
-                Envoyer →
+                Send →
               </button>
             </form>
 
-            {/* Coordonnées */}
+            {/* Contact details */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
               <div>
                 <div style={{ fontFamily: fonts.mono, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark, marginBottom: '8px' }}>
@@ -445,22 +454,22 @@ export default function Home() {
 
               <div>
                 <div style={{ fontFamily: fonts.mono, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark, marginBottom: '8px' }}>
-                  Présence
+                  Presence
                 </div>
                 <div style={{ fontSize: '18px', lineHeight: 1.6 }}>
                   Paris · Accra · Lagos
                 </div>
                 <div style={{ fontSize: '14px', color: colors.mutedDark, marginTop: '4px' }}>
-                  Présence Afrique de l&apos;Ouest via partenariat Africon
+                  West Africa presence via the Africon partnership
                 </div>
               </div>
 
               <div>
                 <div style={{ fontFamily: fonts.mono, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: colors.mutedDark, marginBottom: '8px' }}>
-                  Réponse
+                  Response time
                 </div>
                 <div style={{ fontSize: '15px', color: colors.mutedDark, lineHeight: 1.6, maxWidth: '40ch' }}>
-                  Je réponds personnellement à tous les messages, sous 48 heures ouvrées maximum.
+                  I personally reply to every message, within 48 business hours at most.
                 </div>
               </div>
             </div>
@@ -469,7 +478,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <Footer />
+      <Footer locale="en" />
     </div>
   );
 }

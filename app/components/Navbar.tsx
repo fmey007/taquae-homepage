@@ -1,6 +1,16 @@
 import { colors, fonts } from '@/app/lib/design';
 
-export const Navbar = () => {
+interface NavbarProps {
+  locale?: 'fr' | 'en';
+}
+
+const copy = {
+  fr: { home: '/', services: 'Services', about: 'À propos', contact: 'Contact', ariaHome: 'Taquae Consulting — Accueil' },
+  en: { home: '/en', services: 'Services', about: 'About', contact: 'Contact', ariaHome: 'Taquae Consulting — Home' },
+};
+
+export const Navbar = ({ locale = 'fr' }: NavbarProps) => {
+  const t = copy[locale];
   return (
     <nav
       style={{
@@ -26,8 +36,8 @@ export const Navbar = () => {
         }}
       >
         <a
-          href="/"
-          aria-label="Taquae Consulting — Accueil"
+          href={t.home}
+          aria-label={t.ariaHome}
           style={{
             display: 'inline-flex',
             alignItems: 'flex-start',
@@ -81,20 +91,29 @@ export const Navbar = () => {
             }}
           />
         </a>
-        <ul style={{ display: 'flex', gap: '40px', listStyle: 'none', margin: 0, padding: 0 }}>
+        <ul style={{ display: 'flex', gap: '40px', listStyle: 'none', margin: 0, padding: 0, alignItems: 'center' }}>
           <li>
-            <a href="/#services" style={{ color: colors.light, textDecoration: 'none' }}>
-              Services
+            <a href={`${t.home}#services`} style={{ color: colors.light, textDecoration: 'none' }}>
+              {t.services}
             </a>
           </li>
           <li>
-            <a href="/#about" style={{ color: colors.light, textDecoration: 'none' }}>
-              À propos
+            <a href={`${t.home}#about`} style={{ color: colors.light, textDecoration: 'none' }}>
+              {t.about}
             </a>
           </li>
           <li>
-            <a href="/#contact" style={{ color: colors.light, textDecoration: 'none' }}>
-              Contact
+            <a href={`${t.home}#contact`} style={{ color: colors.light, textDecoration: 'none' }}>
+              {t.contact}
+            </a>
+          </li>
+          <li style={{ display: 'flex', gap: '8px', fontFamily: fonts.mono, fontSize: '12px' }}>
+            <a href="/" style={{ color: locale === 'fr' ? colors.accent : colors.mutedDark, textDecoration: 'none' }}>
+              FR
+            </a>
+            <span style={{ color: colors.mutedDark }}>/</span>
+            <a href="/en" style={{ color: locale === 'en' ? colors.accent : colors.mutedDark, textDecoration: 'none' }}>
+              EN
             </a>
           </li>
         </ul>
