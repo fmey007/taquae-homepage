@@ -19,11 +19,16 @@ const badgeStyle = {
   textTransform: 'uppercase' as const,
 };
 
-const stackItems = [
+type StackItem = { name: string; slug: string; iconUrl?: string };
+
+const stackItems: StackItem[] = [
   { name: 'Astro', slug: 'astro' },
-  { name: 'Sanity', slug: 'sanity' },
   { name: 'Cloudflare Pages', slug: 'cloudflare' },
+  { name: 'Sanity', slug: 'sanity' },
+  { name: 'Airtable', slug: 'airtable' },
   { name: 'Claude API', slug: 'anthropic' },
+  { name: 'ElevenLabs', slug: 'elevenlabs' },
+  { name: 'Descript', slug: 'descript', iconUrl: '/logos/descript.svg' },
   { name: 'Make', slug: 'make' },
 ];
 
@@ -62,7 +67,7 @@ const layers = [
   },
 ];
 
-const stackLabel = 'AI used';
+const stackLabel = 'AI integration stack';
 
 export default function DoingBusinessGhanaEN() {
   return (
@@ -225,7 +230,7 @@ export default function DoingBusinessGhanaEN() {
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`https://cdn.simpleicons.org/${item.slug}`}
+                      src={item.iconUrl ?? `https://cdn.simpleicons.org/${item.slug}`}
                       alt=""
                       width={20}
                       height={20}

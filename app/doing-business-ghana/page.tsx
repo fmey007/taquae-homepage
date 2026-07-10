@@ -19,11 +19,16 @@ const badgeStyle = {
   textTransform: 'uppercase' as const,
 };
 
-const stackItems = [
+type StackItem = { name: string; slug: string; iconUrl?: string };
+
+const stackItems: StackItem[] = [
   { name: 'Astro', slug: 'astro' },
-  { name: 'Sanity', slug: 'sanity' },
   { name: 'Cloudflare Pages', slug: 'cloudflare' },
+  { name: 'Sanity', slug: 'sanity' },
+  { name: 'Airtable', slug: 'airtable' },
   { name: 'Claude API', slug: 'anthropic' },
+  { name: 'ElevenLabs', slug: 'elevenlabs' },
+  { name: 'Descript', slug: 'descript', iconUrl: '/logos/descript.svg' },
   { name: 'Make', slug: 'make' },
 ];
 
@@ -206,7 +211,7 @@ export default function DoingBusinessGhana() {
             <div>
               <span style={{ ...badgeStyle, color: colors.mutedLight, marginBottom: '24px' }}>
                 <span style={{ width: '28px', height: '1px', background: colors.mutedLight, display: 'block' }} />
-                — IA utilisée
+                — Outils d&apos;intégration IA
               </span>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
                 {stackItems.map((item) => (
@@ -223,7 +228,7 @@ export default function DoingBusinessGhana() {
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`https://cdn.simpleicons.org/${item.slug}`}
+                      src={item.iconUrl ?? `https://cdn.simpleicons.org/${item.slug}`}
                       alt=""
                       width={20}
                       height={20}
