@@ -39,15 +39,9 @@ const layers = [
     desc: 'Fixed at print time. Targeted 2-3 year lifespan, like the original 2024 edition.',
   },
   {
-    label: 'L1′',
-    title: 'Mirror layer',
-    desc: 'Visually faithful digital reproduction of the paper page, updated and signed quarterly. Shows “up to date” until something changes. Coming soon.',
-    upcoming: true,
-  },
-  {
-    label: 'L2',
-    title: 'Editor content',
-    desc: 'Web pages under editorial control, stable URLs targeted by the paper QR codes. Absorbs the volatility of external sources.',
+    label: 'L2′',
+    title: 'Digital layer',
+    desc: 'One web page per brochure chapter, pointed to by QR code. Two sections coexist: a synthetic view faithfully mirroring the paper layout, and enriched operational details kept up to date continuously. Stable URLs, never published without human review.',
   },
   {
     label: 'L3',
@@ -57,7 +51,7 @@ const layers = [
   {
     label: 'AI',
     title: 'Watch agent',
-    desc: 'Monitors sources, detects discrepancies across layers L1 to L3 and proposes updates. Never publishes on its own.',
+    desc: 'Monitors sources, detects discrepancies across layers L1, L2′ and L3 and proposes updates. Never publishes on its own.',
   },
   {
     label: 'B2B',

@@ -47,21 +47,21 @@ export default function Confidentialite() {
 
           <div style={{ fontSize: '17px', lineHeight: 1.7, color: colors.ink }}>
             <p style={{ marginBottom: '40px', color: colors.mutedLight, fontStyle: 'italic' }}>
-              Taquae SAS attache une importance particulière au respect de votre vie privée et de vos données
-              personnelles. Cette politique décrit, en toute transparence, comment vos données sont collectées
-              et utilisées sur le site taquae.eu.
+              Le respect de votre vie privée et de vos données personnelles est une priorité. Cette politique
+              décrit, en toute transparence, comment vos données sont collectées et utilisées sur le site
+              taquae.eu.
             </p>
 
             <Section title="1. Responsable du traitement">
-              <p>
-                Le responsable du traitement des données est :
-              </p>
+              <p>Le responsable du traitement des données est :</p>
               <ul>
-                <li>Taquae SAS, RCS Paris 921 421 509</li>
-                <li>10 rue du Colisée, 75008 Paris</li>
-                <li>Représentée par sa Présidente, Madame Folasade Oyedele Meysembourg</li>
+                <li>François Meysembourg, dans le cadre de la constitution de Taquae SAS</li>
                 <li>Contact : f.mey@taquae.eu</li>
               </ul>
+              <p style={{ fontSize: '15px', color: colors.mutedLight, fontStyle: 'italic' }}>
+                Ce rôle sera transféré à Taquae SAS dès son immatriculation (prévue avant le lancement
+                opérationnel de janvier 2027).
+              </p>
             </Section>
 
             <Section title="2. Données collectées">
@@ -98,23 +98,29 @@ export default function Confidentialite() {
             <Section title="5. Destinataires des données">
               <p>Vos données sont destinées exclusivement à :</p>
               <ul>
-                <li>Taquae SAS, en sa qualité de responsable du traitement</li>
+                <li>François Meysembourg (futur Taquae SAS), responsable du traitement</li>
                 <li>
-                  Netlify, Inc., notre hébergeur et fournisseur du service de formulaire (Netlify Forms),
-                  agissant comme sous-traitant au sens du RGPD
+                  Cloudflare, Inc., hébergeur du site et fournisseur de la protection réseau, agissant comme
+                  sous-traitant au sens du RGPD
+                </li>
+                <li>
+                  Formspree, Inc., fournisseur du service de traitement du formulaire de contact, agissant
+                  comme sous-traitant au sens du RGPD
                 </li>
               </ul>
-              <p>
-                Aucune donnée n&apos;est transmise à des tiers à des fins commerciales ou publicitaires.
-              </p>
+              <p>Aucune donnée n&apos;est transmise à des tiers à des fins commerciales ou publicitaires.</p>
             </Section>
 
             <Section title="6. Transfert de données hors Union européenne">
               <p>
-                Notre hébergeur Netlify, Inc. est une société américaine. Vos données sont susceptibles
-                d&apos;être hébergées ou traitées aux États-Unis. Netlify s&apos;appuie sur les{' '}
-                <strong>Clauses Contractuelles Types</strong> de la Commission européenne pour encadrer ces
-                transferts, conformément aux articles 44 et suivants du RGPD.
+                Nos sous-traitants Cloudflare, Inc. et Formspree, Inc. sont des sociétés américaines. Vos
+                données sont susceptibles d&apos;être hébergées ou traitées aux États-Unis. Ces prestataires
+                s&apos;appuient sur les <strong>Clauses Contractuelles Types</strong> de la Commission
+                européenne pour encadrer ces transferts, conformément aux articles 44 et suivants du RGPD.
+              </p>
+              <p style={{ fontSize: '15px', color: colors.mutedLight, fontStyle: 'italic' }}>
+                Une migration vers un hébergeur européen certifié (Clever Cloud, Nantes) est prévue au
+                lancement opérationnel de Taquae SAS en janvier 2027.
               </p>
             </Section>
 
@@ -161,17 +167,17 @@ export default function Confidentialite() {
               <p>
                 Le site taquae.eu ne dépose ni cookies de mesure d&apos;audience, ni cookies publicitaires, ni
                 traceurs de réseaux sociaux. Seuls les cookies strictement nécessaires au fonctionnement
-                technique du site et à la protection anti-spam du formulaire (Netlify Forms) sont susceptibles
-                d&apos;être déposés.
+                technique du site et à la sécurité (protection anti-bot Cloudflare, anti-spam Formspree) sont
+                susceptibles d&apos;être déposés.
               </p>
             </Section>
 
             <Section title="10. Sécurité">
               <p>
                 Toutes les communications avec le site taquae.eu sont chiffrées via le protocole HTTPS
-                (certificat SSL). Taquae SAS met en œuvre les mesures techniques et organisationnelles
-                appropriées pour protéger vos données contre tout accès non autorisé, altération, divulgation
-                ou destruction.
+                (certificat SSL Cloudflare). Les mesures techniques et organisationnelles appropriées sont
+                mises en œuvre pour protéger vos données contre tout accès non autorisé, altération,
+                divulgation ou destruction.
               </p>
             </Section>
 

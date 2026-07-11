@@ -39,15 +39,9 @@ const layers = [
     desc: 'Figée à l’impression. Visée 2-3 ans de durée de vie, comme l’édition originale 2024.',
   },
   {
-    label: 'L1′',
-    title: 'Couche miroir',
-    desc: 'Reproduction visuelle fidèle de la page papier, mise à jour trimestrielle et signée. Affiche « à jour » tant que rien n’a changé. À venir.',
-    upcoming: true,
-  },
-  {
-    label: 'L2',
-    title: 'Contenu éditeur',
-    desc: 'Pages web sous contrôle, URLs stables pointées par les QR codes papier. Absorbe la volatilité des sources externes.',
+    label: 'L2′',
+    title: 'Couche numérique',
+    desc: 'Une page web par chapitre de la brochure, pointée par QR code. Deux sections cohabitent : vue synthétique reprenant fidèlement la mise en page papier, et détails opérationnels enrichis actualisés en continu. URLs stables, jamais publié sans validation humaine.',
   },
   {
     label: 'L3',
@@ -57,7 +51,7 @@ const layers = [
   {
     label: 'IA',
     title: 'Agent de veille',
-    desc: 'Surveille les sources, détecte les écarts dans les couches L1 à L3 et propose des mises à jour. Ne publie jamais seul.',
+    desc: 'Surveille les sources, détecte les écarts dans les couches L1, L2′ et L3 et propose des mises à jour. Ne publie jamais seul.',
   },
   {
     label: 'B2B',

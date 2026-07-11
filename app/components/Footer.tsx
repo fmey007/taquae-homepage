@@ -21,7 +21,7 @@ const copy = {
     privacy: 'Confidentialité',
     contactTitle: 'Contact',
     presence: 'Paris · Accra · Lagos',
-    rights: '© 2026 Taquae SAS · RCS Paris 921 421 509 · Capital 1 000 €',
+    rights: '© 2026 François Meysembourg · Taquae SAS en cours de constitution',
     version: 'v1.0 · Lancement officiel 2027-01',
   },
   en: {
@@ -40,7 +40,7 @@ const copy = {
     privacy: 'Privacy',
     contactTitle: 'Contact',
     presence: 'Paris · Accra · Lagos',
-    rights: '© 2026 Taquae SAS · RCS Paris 921 421 509 · Capital €1,000',
+    rights: '© 2026 François Meysembourg · Taquae SAS being incorporated',
     version: 'v1.0 · Official launch 2027-01',
   },
 };

@@ -5,7 +5,7 @@ import { colors, fonts } from '@/app/lib/design';
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description:
-    'Mentions légales du site taquae.eu — éditeur, hébergeur, propriété intellectuelle et conditions d\'utilisation.',
+    'Mentions légales du site taquae.eu — responsable de la publication, hébergeur, propriété intellectuelle et conditions d\'utilisation.',
   robots: { index: true, follow: true },
 };
 
@@ -48,30 +48,26 @@ export default function MentionsLegales() {
           <div style={{ fontSize: '17px', lineHeight: 1.7, color: colors.ink }}>
             <Section title="Éditeur du site">
               <p>
-                Le site <strong>taquae.eu</strong> est édité par la société <strong>Taquae</strong>, société par
-                actions simplifiée (SAS) au capital de 1 000 €.
+                Le site <strong>taquae.eu</strong> est publié par <strong>François Meysembourg</strong>, dans le
+                cadre de la constitution de la société <strong>Taquae SAS (en cours de constitution)</strong>,
+                dont le lancement opérationnel est prévu début 2027.
               </p>
               <ul>
-                <li>Siège social : 10 rue du Colisée, 75008 Paris</li>
-                <li>RCS Paris : 921 421 509</li>
-                <li>SIRET : 921 421 509 00018</li>
-                <li>Code APE : 7022Z (Conseil pour les affaires et autres conseils de gestion)</li>
-                <li>Email : f.mey@taquae.eu</li>
+                <li>Responsable de la publication : François Meysembourg</li>
+                <li>Contact : f.mey@taquae.eu</li>
               </ul>
-            </Section>
-
-            <Section title="Directrice de la publication">
-              <p>
-                Madame Folasade Oyedele Meysembourg, Présidente de Taquae SAS.
+              <p style={{ fontSize: '15px', color: colors.mutedLight, fontStyle: 'italic' }}>
+                Les informations d&apos;immatriculation (RCS, SIREN, SIRET, siège social) seront mises à jour
+                dès l&apos;immatriculation de la nouvelle SAS Taquae.
               </p>
             </Section>
 
             <Section title="Hébergement">
               <p>
-                Le site est hébergé par <strong>Netlify, Inc.</strong>, 512 2nd Street, Suite 200, San Francisco,
+                Le site est hébergé par <strong>Cloudflare, Inc.</strong>, 101 Townsend Street, San Francisco,
                 CA 94107, États-Unis. Site web :{' '}
-                <a href="https://www.netlify.com" style={linkStyle}>
-                  netlify.com
+                <a href="https://www.cloudflare.com" style={linkStyle}>
+                  cloudflare.com
                 </a>
                 .
               </p>
@@ -86,13 +82,15 @@ export default function MentionsLegales() {
             <Section title="Propriété intellectuelle">
               <p>
                 L&apos;ensemble des contenus présents sur le site taquae.eu (textes, images, logos, identité
-                visuelle, structure éditoriale) est la propriété exclusive de Taquae SAS, sauf mention contraire.
-                Toute reproduction, représentation, diffusion ou exploitation, totale ou partielle, sans
-                autorisation écrite préalable est interdite et constitue une contrefaçon sanctionnée par les
-                articles L.335-2 et suivants du Code de la propriété intellectuelle.
+                visuelle, structure éditoriale) est la propriété exclusive de François Meysembourg, sauf mention
+                contraire. Ces droits seront transférés à Taquae SAS dès son immatriculation. Toute reproduction,
+                représentation, diffusion ou exploitation, totale ou partielle, sans autorisation écrite préalable
+                est interdite et constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du
+                Code de la propriété intellectuelle.
               </p>
               <p>
-                La marque <strong>Taquae</strong> et le wordmark associé sont la propriété de Taquae SAS.
+                La marque <strong>Taquae</strong> est déposée à l&apos;INPI (marque verbale n°5270760, classes 35
+                et 42) et sera transférée à la SAS Taquae dès son immatriculation.
               </p>
             </Section>
 
@@ -110,17 +108,17 @@ export default function MentionsLegales() {
             <Section title="Cookies">
               <p>
                 Le site taquae.eu ne dépose aucun cookie de mesure d&apos;audience ni de traçage publicitaire.
-                Seuls les cookies strictement nécessaires au fonctionnement du site et à la sécurité (anti-spam
-                Netlify Forms) sont susceptibles d&apos;être déposés. Aucun consentement préalable n&apos;est
-                donc requis.
+                Seuls les cookies strictement nécessaires au fonctionnement du site et à la sécurité (protection
+                anti-bot Cloudflare, anti-spam du formulaire de contact) sont susceptibles d&apos;être déposés.
+                Aucun consentement préalable n&apos;est donc requis.
               </p>
             </Section>
 
             <Section title="Liens externes">
               <p>
-                Le site peut contenir des liens vers des sites tiers. Taquae SAS n&apos;exerce aucun contrôle
-                sur ces sites et ne saurait être tenue responsable de leurs contenus, pratiques ou politiques de
-                confidentialité.
+                Le site peut contenir des liens vers des sites tiers. Le responsable de la publication n&apos;exerce
+                aucun contrôle sur ces sites et ne saurait être tenu responsable de leurs contenus, pratiques ou
+                politiques de confidentialité.
               </p>
             </Section>
 
