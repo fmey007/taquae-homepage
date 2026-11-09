@@ -20,9 +20,8 @@ export default function Home() {
     >
       <div style={{ position: 'relative', display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1, fontSize: 'clamp(64px, 12vw, 104px)' }}>
         <span style={{ position: 'relative', fontFamily: fonts.logo, fontSize: '1em', lineHeight: 1, alignSelf: 'stretch' }}>
-          Taqua
-          <span style={{ marginLeft: '0.15em' }}>e</span>
-          {/* point jaune logé dans l'intervalle entre le dernier « a » et le « e », comme sur le modèle */}
+          Taquae
+          {/* point jaune entre le dernier « a » et le « e » (lettres non espacées) */}
           <span
             aria-hidden="true"
             style={{ position: 'absolute', left: '2.855em', top: '0.219em', width: '0.2em', height: '0.2em', borderRadius: '50%', background: colors.accent }}
