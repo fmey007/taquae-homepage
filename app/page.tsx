@@ -20,11 +20,12 @@ export default function Home() {
     >
       <div style={{ position: 'relative', display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1, fontSize: 'clamp(64px, 12vw, 104px)' }}>
         <span style={{ position: 'relative', fontFamily: fonts.logo, fontSize: '1em', lineHeight: 1, alignSelf: 'stretch' }}>
-          Taquae
-          {/* point jaune posé en haut, entre le dernier « a » et le « e » (jonction à 2,89 em), comme sur le modèle */}
+          Taqua
+          <span style={{ marginLeft: '0.15em' }}>e</span>
+          {/* point jaune logé dans l'intervalle entre le dernier « a » et le « e », comme sur le modèle */}
           <span
             aria-hidden="true"
-            style={{ position: 'absolute', left: '2.79em', top: '0.18em', width: '0.2em', height: '0.2em', borderRadius: '50%', background: colors.accent }}
+            style={{ position: 'absolute', left: '2.865em', top: '0.18em', width: '0.2em', height: '0.2em', borderRadius: '50%', background: colors.accent }}
           />
         </span>
         <span style={{ fontFamily: fonts.logo, fontSize: '0.29em', color: colors.accent, marginTop: '-0.06em', lineHeight: 1 }}>
