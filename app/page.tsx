@@ -18,19 +18,18 @@ export default function Home() {
         fontFamily: fonts.sans,
       }}
     >
-      <div style={{ display: 'inline-flex', alignItems: 'flex-start', gap: '8px' }}>
-        <span style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1 }}>
-          <span style={{ fontFamily: fonts.logo, fontSize: 'clamp(64px, 12vw, 104px)', lineHeight: 1, alignSelf: 'stretch' }}>
-            Taquae
-          </span>
-          <span style={{ fontFamily: fonts.logo, fontSize: 'clamp(20px, 3.4vw, 30px)', color: colors.accent, marginTop: '6px', lineHeight: 1 }}>
-            Consulting
-          </span>
+      <div style={{ position: 'relative', display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1, fontSize: 'clamp(64px, 12vw, 104px)' }}>
+        <span style={{ position: 'relative', fontFamily: fonts.logo, fontSize: '1em', lineHeight: 1, alignSelf: 'stretch' }}>
+          Taquae
+          {/* point jaune posé sur le coin haut droit du dernier « e », comme sur le modèle */}
+          <span
+            aria-hidden="true"
+            style={{ position: 'absolute', right: '-0.03em', top: '0.2em', width: '0.2em', height: '0.2em', borderRadius: '50%', background: colors.accent }}
+          />
         </span>
-        <span
-          aria-hidden="true"
-          style={{ width: '10px', height: '10px', borderRadius: '50%', background: colors.accent, display: 'inline-block', marginTop: '14px' }}
-        />
+        <span style={{ fontFamily: fonts.logo, fontSize: '0.29em', color: colors.accent, marginTop: '-0.06em', lineHeight: 1 }}>
+          Consulting
+        </span>
       </div>
 
       <p style={{ fontSize: '20px', margin: '18px 0 0' }}>La stratégie IA avant la technologie.</p>
