@@ -20,7 +20,7 @@ export const Navbar = ({ locale = 'fr' }: NavbarProps) => {
         right: 0,
         zIndex: 60,
         padding: '14px 0',
-        background: 'rgba(14, 15, 12, 0.78)',
+        background: 'rgba(63, 67, 103, 0.82)',
         backdropFilter: 'blur(14px) saturate(1.1)',
         color: colors.light,
       }}

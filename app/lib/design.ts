@@ -1,7 +1,7 @@
 // Design Tokens
 export const colors = {
-  dark: '#0E0F0C',
-  darkSecondary: '#161814',
+  dark: '#3F4367', // bleu DEMATEK
+  darkSecondary: '#474C73',
   light: '#F3EEE3',
   lightSecondary: '#FAF7EF',
   ink: '#14140F',
@@ -10,8 +10,8 @@ export const colors = {
   mutedLight: 'rgba(20, 20, 15, 0.58)',
   ruleDark: 'rgba(243, 238, 227, 0.14)',
   ruleLight: 'rgba(20, 20, 15, 0.12)',
-  accent: '#C8FF3E', // lime
-  accentDeep: '#9FD419',
+  accent: '#F3E04C', // jaune DEMATEK
+  accentDeep: '#D4C23A',
 };
 
 export const fonts = {
