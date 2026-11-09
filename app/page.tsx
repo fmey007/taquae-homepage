@@ -24,7 +24,7 @@ export default function Home() {
           {/* point jaune entre le dernier « a » et le « e » (lettres non espacées) */}
           <span
             aria-hidden="true"
-            style={{ position: 'absolute', left: '2.785em', top: '0.335em', width: '0.2em', height: '0.2em', borderRadius: '50%', background: colors.accent }}
+            style={{ position: 'absolute', left: '2.775em', top: '0.364em', width: '0.2em', height: '0.2em', borderRadius: '50%', background: colors.accent }}
           />
         </span>
         <span style={{ fontFamily: fonts.logo, fontSize: '0.29em', color: colors.accent, marginTop: '-0.06em', lineHeight: 1 }}>
