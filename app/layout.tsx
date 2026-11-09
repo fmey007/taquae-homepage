@@ -21,7 +21,7 @@ const permanentMarker = Permanent_Marker({
 export const metadata: Metadata = {
   metadataBase: new URL("https://taquae.eu"),
   title: {
-    default: "Taquae Consulting · Stratégie IA pour PME et organismes de développement",
+    default: "Taquae Consulting · Site en construction",
     template: "%s · Taquae Consulting",
   },
   description:
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "François Meysembourg", url: "https://taquae.eu" }],
   creator: "Taquae Consulting",
-  publisher: "Taquae SASU",
+  publisher: "Taquae",
   openGraph: {
     type: "website",
     locale: "fr_FR",
