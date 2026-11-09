@@ -25,7 +25,7 @@ export default function Home() {
           {/* point jaune logé dans l'intervalle entre le dernier « a » et le « e », comme sur le modèle */}
           <span
             aria-hidden="true"
-            style={{ position: 'absolute', left: '2.865em', top: '0.18em', width: '0.2em', height: '0.2em', borderRadius: '50%', background: colors.accent }}
+            style={{ position: 'absolute', left: '2.855em', top: '0.219em', width: '0.2em', height: '0.2em', borderRadius: '50%', background: colors.accent }}
           />
         </span>
         <span style={{ fontFamily: fonts.logo, fontSize: '0.29em', color: colors.accent, marginTop: '-0.06em', lineHeight: 1 }}>
